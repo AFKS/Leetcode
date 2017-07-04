@@ -4,7 +4,4 @@
 
 ## Solution
 
-### Python
-
-
 ### C++
