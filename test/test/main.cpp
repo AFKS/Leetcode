@@ -10,47 +10,34 @@
 #include <vector>
 #include <math.h>
 using namespace std;
-int midPartMaxArray(vector<int>& nums, int st, int ed, int midSpot){
-    if (st>ed) return 0;
-    if (st==ed) return nums[st];
-    int lfDirMaxArray, rtDirMaxArray;
-    int lfDirSumArray, rtDirSumArray;
-    lfDirMaxArray = rtDirMaxArray = INT_MIN;
-    lfDirSumArray = rtDirSumArray = 0;
-    //midSpot -> ed
-    for (int i = midSpot; i<=ed; ++i){
-        rtDirSumArray+=nums[i];
-        rtDirMaxArray = rtDirSumArray>rtDirMaxArray?rtDirSumArray:rtDirMaxArray;
-    }
-    //midSpot -> st
-    for (int i = midSpot; i>=st; --i){
-        lfDirSumArray+=nums[i];
-        lfDirMaxArray = lfDirSumArray>lfDirMaxArray?lfDirSumArray:lfDirMaxArray;
-    }
-    return lfDirMaxArray+rtDirMaxArray-nums[midSpot];
+
+
+int str2IntOpt(string& str){
+    
 }
 
-int maxSubArray(vector<int>& nums, int st, int ed){
-    if (st<ed) return 0;
-    int midSpot = (st+ed)/2;
-    int lfPartMaxSubVal = maxSubArray(nums, st, midSpot-1);
-    int rtPartMaxSubVal = maxSubArray(nums, midSpot+1,ed);
-    int midPartMaxSubVal = midPartMaxArray(nums,st,ed,midSpot);
-    return max(max(lfPartMaxSubVal,rtPartMaxSubVal),midPartMaxSubVal);
-}
-
-int maxSubArray(vector<int>& nums) {
-    if (nums.empty()) return 0;
-    return maxSubArray(nums,0,floor(nums.size()/2));
+vector<int> str2IntSplit(string& str){
+    vector<int> res;
+    if (str.empty()) return res;
+    for(int st=0;st<=str.size()-1;++st){
+        string temp;
+        for(int ed=st;ed<=str.size()-1;++ed){
+            if (str[ed]!='+'&&str[ed]!='-'&&str[ed]!='*'){
+                temp.push_back(str[ed]);
+            }
+            else{
+                st = ed;
+            }
+        }
+        val = str2IntOpt(temp);
+        res.push_back(val);
+    }
 }
 
 
 
 int main(int argc, const char * argv[]) {
     
-    vector<int> nums;
-    nums= {-2};
-    int res = maxSubArray(nums);
-    cout << res;
+    string str = "1+2+3+4+5";
     return 0;
 }
