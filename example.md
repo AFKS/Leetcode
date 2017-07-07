@@ -1,4 +1,4 @@
-# 004 Median of Two Sorted Arrays
+# 083 Remove Duplicates from Sorted List
 ## Description
 
 
