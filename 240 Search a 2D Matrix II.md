@@ -2,11 +2,11 @@
 
 ## Description
 > Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
-> 
+>
 > Integers in each row are sorted in ascending from left to right.
 > Integers in each column are sorted in ascending from top to bottom.
 > For example,
-> 
+>
 > Consider the following matrix:
 > <pre>
 > [
@@ -27,7 +27,7 @@
 
 ### Divide and Conquer
 1. C++
-```
+```c++
 class Solution {
 public:
     bool searchMatrixDivideAndConquer(vector<vector<int>>& matrix, int row_st, int row_ed, int col_st, int col_ed, int target){

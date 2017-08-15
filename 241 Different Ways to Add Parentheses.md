@@ -2,8 +2,8 @@
 
 ## Description
 > Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.
-> 
-> 
+>
+>
 > **Example 1**
 > <pre>
 > Input: "2-1-1".
@@ -11,7 +11,7 @@
 > (2-(1-1)) = 2
 > Output: [0, 2]
 > </pre>
-> 
+>
 > **Example 2**
 > <pre>
 > Input: "2*3-4*5"
@@ -22,13 +22,13 @@
 > (((2*3)-4)*5) = 10
 > Output: [-34, -14, -10, -10, 10]
 > </pre>
-> 
+>
 
 ## Solution
 - Divide and Conquer
 
 ### Divide and Conquer
-```
+```c++
 class Solution {
 public:
     int intCompute(int a, int b, char opt){
