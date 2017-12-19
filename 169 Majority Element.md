@@ -15,7 +15,8 @@
 
 ### Divide and Conquer
 1. C++
-```c++
+
+```c
 class Solution {
 public:
     
@@ -43,6 +44,7 @@ public:
     }
 };
 ```
+
 - Complexity
 
 ### Bit Manipulation
@@ -51,6 +53,3 @@ public:
 
 
 2. Python
-
-
-

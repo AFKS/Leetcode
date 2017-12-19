@@ -13,7 +13,7 @@
 ### Divide and Conquer
 1. C++
 
-```C++
+```c
 class Solution {
 public:
     int midPartMaxArray(vector<int>& nums, int st, int ed, int midSpot){
@@ -55,8 +55,8 @@ public:
     }
 };
 ```
+
 - Complexity
 
 ### Dynamic Programming
 3. 
-

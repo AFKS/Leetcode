@@ -9,7 +9,8 @@
 
 
 ### Linked List
-```C++
+
+```c
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -45,3 +46,4 @@ public:
     }
 };
 ```
+

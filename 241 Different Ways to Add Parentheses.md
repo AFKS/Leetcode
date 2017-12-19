@@ -28,7 +28,8 @@
 - Divide and Conquer
 
 ### Divide and Conquer
-```c++
+
+```c
 class Solution {
 public:
     int intCompute(int a, int b, char opt){
@@ -92,3 +93,4 @@ public:
     }
 };
 ```
+

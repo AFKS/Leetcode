@@ -27,7 +27,8 @@
 
 ### Divide and Conquer
 1. C++
-```c++
+
+```c
 class Solution {
 public:
     bool searchMatrixDivideAndConquer(vector<vector<int>>& matrix, int row_st, int row_ed, int col_st, int col_ed, int target){
