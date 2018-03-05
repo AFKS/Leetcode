@@ -1,0 +1,18 @@
+{
+  "title": "077. Combinations",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 077 Combinations\n- **Backtracking**\n\n## Description\n![IMAGE](quiver-image-url/0F87BBC6268922D4E1F605FDC7D31B58.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Backtracking**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void backTrackingCombine(int st, int& ed, int& k, vector<int>& temp, vector<vector<int>>& result){\n        if (temp.size()==k){\n            result.push_back(temp);\n            return;\n        }\n        if (st>ed || temp.size()>k) return;\n        \n        for (int i = st; i<=ed; ++i){\n            temp.push_back(i);\n            backTrackingCombine(i+1, ed, k, temp, result);\n            temp.pop_back();\n        }\n        \n    }\npublic:\n    vector<vector<int>> combine(int n, int k) {\n        vector<vector<int>> result(0);\n        vector<int> temp(0);\n        backTrackingCombine(1, n, k, temp, result);\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "206 Reverse Linked List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 206 Reverse Linked List\n## Description\n> Reverse a singly linked list.\n>\n> click to show more hints.\n>\n> Hint:\n> A linked list can be reversed either iteratively or recursively. Could you\n> implement both?\n\n## Solution\n- **Linked List**\n\n\n### Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* reverseList(ListNode* head) {\n        //new reverseList initialization with nullptr\n        ListNode* res = nullptr;\n        \n        while(head!=nullptr){\n            //recored the next node for reverse\n            ListNode* tempNext = head->next;\n            head->next = res;\n            res = head;\n            head = tempNext;\n        }\n        return res;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

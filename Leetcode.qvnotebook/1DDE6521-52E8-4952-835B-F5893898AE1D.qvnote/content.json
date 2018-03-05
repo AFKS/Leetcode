@@ -1,0 +1,18 @@
+{
+  "title": "169 Majority Element",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 169 Majority Element\n## Description\n> Given an array of size n, find the majority element. **The majority element \n> is the element that appears more than ⌊ n/2 ⌋ times**.\n>\n> You may assume that the array is non-empty and the majority element always \n> exist in the array.\n\n向下取整:![](https://wikimedia.org/api/rest_v1/media/math/render/svg/f0ec449ec02f0c040dba1a7ca56c5fa73550459d)\n\n## Solution\n- **Divide and Conquer**\n- Bit Manipulation\n- *Array*\n\n### Divide and Conquer\n1. C++"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    \n    void divideConquor(vector<int>& nums, int st, int ed, map<int,int>& imap, int& res){\n        if (st>ed) return;\n        \n        if (st == ed){\n            ++imap[nums[st]];\n            if (imap[nums[st]]>nums.size()/2)\n                res = nums[st];  \n            return;\n        }\n        int mid = (st+ed)/2;\n        divideConquor(nums,st,mid,imap,res);\n        divideConquor(nums,mid+1,ed,imap,res);\n    }      \n        \n    \n    int majorityElement(vector<int>& nums) {\n        if(nums.empty()) return 0;\n        map<int,int> imap;\n        int res = nums[0];\n        divideConquor(nums,0,nums.size()-1,imap,res);\n        return res;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "- Complexity\n\n### Bit Manipulation\n\n1. C++\n\n\n2. Python\n\n\n\n"
+    }
+  ]
+}

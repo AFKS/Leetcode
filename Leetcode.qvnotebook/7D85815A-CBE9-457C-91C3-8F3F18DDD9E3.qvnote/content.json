@@ -1,0 +1,14 @@
+{
+  "title": "104. Maximum Depth of Binary Tree",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 104 Maximum Depth of Binary Tree\n- **Depth-first Search** + Tree\n\n## Description\n![IMAGE](quiver-image-url/C0116374FC7C314A2C82D2406E8F709B.jpg)\n\n## 1. Thought line\n\n\n## 2. **Depth-first Search** + Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\n\n\nclass Solution {\npublic:\n    int maxDepth(TreeNode* root) {\n        if (root==nullptr) return 0;\n        return 1+max(maxDepth(root->left),maxDepth(root->right));\n    }\n};"
+    }
+  ]
+}

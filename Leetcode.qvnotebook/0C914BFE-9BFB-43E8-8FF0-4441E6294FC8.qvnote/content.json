@@ -1,0 +1,18 @@
+{
+  "title": "033. Search in Rotated Sorted Array",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 033 Search in Rotated Sorted Array\n- **Binary Search**+array\n\n## Description\n![IMAGE](quiver-image-url/6D084E8DD7282E7294D62D51C4699D32.jpg)\n\n## 1. Thought line\n\n1. Find pivot\n2. Do binary search on left half;\n3. Do binary search on right half;\n4. Binary search processing\n\n   \n\n\n\n## 2. **Binary Search**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\n\nprivate:\n    void binarySearch(vector<int>& nums, int target, int st, int ed, int& res){\n        // finish process condition\n        if (st>ed) return;\n        if (target<nums[st]||target>nums[ed]) return;\n        \n        // no target\n        if (st==ed && nums[st]!=target) return;\n        \n        // find target\n        if (st==ed && nums[st]==target) res = st;\n        \n        // keep finding process\n        else{\n            // middle spot in array\n            int mid = (st+ed)/2;\n            if (target<=nums[mid])\n                binarySearch(nums, target, st, mid, res);\n            else\n                binarySearch(nums, target, mid+1, ed, res);\n        }\n    }\n\npublic:\n    int search(vector<int>& nums, int target) {\n        int res = -1;\n        int pivot = 0;\n        if (nums.empty()) return -1;\n        // find pivot\n        for (int i = 1; !nums.empty() && i<=nums.size()-1; ++i){\n            if (nums[i-1]>nums[i]){\n                pivot = i;\n                break;\n            }\n        }\n        // process binary search on left half \n        binarySearch(nums, target, 0, pivot-1, res);\n        // process binary search on right half\n        binarySearch(nums, target, pivot, nums.size()-1, res);\n        return res;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

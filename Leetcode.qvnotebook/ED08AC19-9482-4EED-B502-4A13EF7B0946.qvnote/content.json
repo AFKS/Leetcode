@@ -1,0 +1,18 @@
+{
+  "title": "098. Validate Binary Search Tree",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 098 Validate Binary Search Tree\n- **Depth-first Search** + tree\n\n## Description\n![IMAGE](quiver-image-url/1955350AF45501CD41D3B1C330B15C3F.jpg)\n\n## 1. Thought line\n\n\n## 2. **Depth-first Search** + tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\n\nclass Solution {\nprivate:\n    bool isValid(TreeNode* root, long leftBorder, long rightBorder){\n        if (root==nullptr) return true;\n        int node = root->val;\n        if (node<=leftBorder || node>=rightBorder) return false;\n        return isValid(root->left, leftBorder,node) && isValid(root->right, node,rightBorder);\n    }\npublic:\n    bool isValidBST(TreeNode* root) {\n        long leftBorder = LONG_MIN;\n        long rightBorder = LONG_MAX;\n        return isValid(root, leftBorder,rightBorder);\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

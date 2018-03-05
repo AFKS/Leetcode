@@ -1,0 +1,18 @@
+{
+  "title": "049. Group Anagrams",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 049 Group Anagrams\n- **Hash Table**+string\n\n## Description\n![IMAGE](quiver-image-url/EB5DC459F0B97B34579A6632DB5B2DAE.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Hash Table**+string"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    vector<vector<string>> groupAnagrams(vector<string>& strs) {\n        map<string, vector<string>> imap;\n        vector<vector<string>> result;\n        for (int i = 0; i<=strs.size()-1; ++i){\n            string temp = strs[i];\n            sort(temp.begin(),temp.end());\n            imap[temp].push_back(strs[i]);\n        }\n            \n        for (auto it = imap.begin(); it!=imap.end(); ++it){\n            string index = it->first;\n            result.push_back(imap[index]);\n        }\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

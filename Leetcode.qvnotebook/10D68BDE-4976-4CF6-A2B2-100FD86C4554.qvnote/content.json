@@ -1,0 +1,18 @@
+{
+  "title": "017. Letter Combinations of a Phone Number",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 017 Letter Combinations of a Phone Number\n\n- **BackTracking**\n\n## Description\n![IMAGE](quiver-image-url/B8643AD4B0F6E1BCF99EAA6525946BF7.jpg)\n\n## 1. Thought line\n\n\n## 2. BackTracking\n"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    vector<string> letterCombinations(string digits) {\n      vector<string> result;\n      if(digits.empty()) return vector<string>();\n      static const vector<string> v = {\"\", \"\", \"abc\", \"def\", \"ghi\", \"jkl\", \"mno\", \n                                       \"pqrs\", \"tuv\", \"wxyz\"};\n\n      result.push_back(\"\");   // add a seed for the initial case\n      for(int i = 0 ; i < digits.size(); ++i) {\n          int num = digits[i]-'0';\n          if(num < 0 || num > 9) break;\n\n          const string& candidate = v[num];\n          if(candidate.empty()) continue;\n\n          vector<string> tmp;\n          for(int j = 0 ; j < candidate.size() ; ++j) {\n              for(int k = 0 ; k < result.size() ; ++k) {\n                  tmp.push_back(result[k] + candidate[j]);\n              }\n          }\n          result.swap(tmp);\n      }\n      return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "\n"
+    }
+  ]
+}

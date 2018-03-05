@@ -1,0 +1,23 @@
+{
+  "title": "112. Path Sum",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 112 Path Sum\n- **Depth-first Search** + Tree \n\n\n## Description\n![IMAGE](quiver-image-url/E1D1CB9F51D2FC7AFA7F14524DDA22F4.jpg)\n\n## 1. Thought line\n"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 2. **Depth-first Search** + Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\nprivate:\n    bool DFS_Sum(TreeNode* node, int tempSum, int sum){\n        if (node == nullptr) return false;\n        tempSum = tempSum + node->val;\n        if (node != nullptr && node->left == nullptr && node->right == nullptr && tempSum == sum) return true;\n        return DFS_Sum(node->left, tempSum, sum) || DFS_Sum(node->right, tempSum, sum);\n    }\npublic:\n    bool hasPathSum(TreeNode* root, int sum) {\n        int tempSum = 0;\n        return DFS_Sum(root, tempSum, sum);\n    }\n};"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    }
+  ]
+}

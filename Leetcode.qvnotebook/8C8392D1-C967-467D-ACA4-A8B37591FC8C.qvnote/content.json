@@ -1,0 +1,18 @@
+{
+  "title": "241 Different Ways to Add Parentheses",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 241 Different Ways to Add Parentheses\n\n## Description\n> Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.\n>\n>\n> **Example 1**\n> <pre>\n> Input: \"2-1-1\".\n> ((2-1)-1) = 0\n> (2-(1-1)) = 2\n> Output: [0, 2]\n> </pre>\n>\n> **Example 2**\n> <pre>\n> Input: \"2*3-4*5\"\n> (2*(3-(4*5))) = -34\n> ((2*3)-(4*5)) = -14\n> ((2*(3-4))*5) = -10\n> (2*((3-4)*5)) = -10\n> (((2*3)-4)*5) = 10\n> Output: [-34, -14, -10, -10, 10]\n> </pre>\n>\n\n## Solution\n- Divide and Conquer\n\n### Divide and Conquer"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int intCompute(int a, int b, char opt){\n        if (opt=='+') return a+b;\n        if (opt=='-') return a-b;\n        if (opt=='*') return a*b;\n    }\n    \n    vector<int> twoVectorComputer(vector<int>& vect1, vector<int>& vect2, char opt){\n        vector<int> res = {};\n        if (vect1.empty()&&vect2.empty()) return res;\n        else if (vect1.empty()) return vect2;\n        else if (vect2.empty()) return vect1;\n        else{\n            for(int i=0;i<vect1.size();++i){\n                for(int j=0;j<vect2.size();++j){\n                    int temp = intCompute(vect1[i],vect2[j],opt);\n                    res.push_back(temp);\n                }\n            }\n        }\n        return res; \n    }\n    \n    vector<int> diffWay2Computer(string& input, int st, int ed){\n        /*\n        p1. input string has operator mixed. -> need to be splited \n        p2. input string has no operator mixed -> need to be translate to be INT\n        */\n        vector<int> res = {};\n        if (st>ed) return res;\n        \n        vector<int> lfCompute{};\n        vector<int> rtCompute{};\n        \n        bool pureNum = true;    //flag for p2\n        int tempInt=0; \n        \n        for (int i=st;i<=ed;++i){\n            //p1\n            if (input[i]=='+'||input[i]=='-'||input[i]=='*'){\n                pureNum = false;\n                //keep split\n                lfCompute = diffWay2Computer(input,st,i-1);\n                rtCompute = diffWay2Computer(input,i+1,ed);\n                vector<int> lfComputeOptRtCompute = twoVectorComputer(lfCompute, rtCompute, input[i]);\n                for (int i=0;i<=lfComputeOptRtCompute.size()-1;++i)\n                    res.push_back(lfComputeOptRtCompute[i]);\n            }\n            if (pureNum==true)  tempInt = tempInt*10+(input[i]-'0');\n        }\n        \n        if (pureNum==true)  res.push_back(tempInt);\n        \n        return res;\n    }\n    \n    \n    vector<int> diffWaysToCompute(string input) {\n        return diffWay2Computer(input,0,input.size()-1);\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

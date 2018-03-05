@@ -1,0 +1,18 @@
+{
+  "title": "102. Binary Tree Level Order Traversal",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 102 Binary Tree Level Order Traversal\n- **Breadth-first Search** + Queue + Tree\n\n## Description\n![IMAGE](quiver-image-url/E77381CCF59928DA7C88A1B66C211C6F.jpg)\n\n## 1. Thought line\n\n\n## 2. **Breadth-first Search** + Queue + Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\n#include <queue>\n\nclass Solution {\npublic:\n    vector<vector<int>> levelOrder(TreeNode* root) {\n        vector<vector<int>> result;\n        queue<TreeNode*> que;\n        if (root!=nullptr) que.emplace(root);\n        \n        while (!que.empty() || que.front()!=nullptr){\n            queue<TreeNode*> tempQue;\n            vector<int> tempVec;\n            while (!que.empty()){\n                tempVec.push_back(que.front()->val);\n                if (que.front()->left!=nullptr ) tempQue.push(que.front()->left);\n                if (que.front()->right!=nullptr) tempQue.push(que.front()->right);\n                que.pop();\n            }\n            if(!tempVec.empty()) result.push_back(tempVec);\n            else break;\n            if(!tempQue.empty()) que.swap(tempQue);\n            else break;\n            \n            \n        }\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

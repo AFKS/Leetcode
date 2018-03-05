@@ -1,0 +1,18 @@
+{
+  "title": "082. Remove Duplicates from Sorted List II",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 082 Remove Duplicates from Sorted List II\n- **Linked List**\n\n## Description\n![IMAGE](quiver-image-url/873A4B152F56B3F422A95DF0E7A41823.jpg)\n\n## 1. Thought line\n![IMAGE](quiver-image-url/5AA64C9AB25F35521796290F586994F7.jpg)\n\n\n## 2. **Linked List**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* deleteDuplicates(ListNode* head) {\n        ListNode* dummyHead = new ListNode(0);\n        dummyHead->next = head;\n        ListNode* validatedPtr = dummyHead;\n        int actElement = 0;\n        while(head!=nullptr){\n            ++actElement;\n            while(head->next!=nullptr && head->next->val == head->val){\n                ++actElement;\n                head = head->next;\n            }\n            ListNode* newHead = head->next;\n            if (actElement==1){\n                validatedPtr->next = head;\n                validatedPtr = validatedPtr->next;\n            }\n            else{\n                validatedPtr->next = nullptr;\n                head->next = nullptr;\n            }\n            head = newHead;    \n            actElement = 0;\n        }\n        return dummyHead->next;\n    }\n};\n\n\n\n\n/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* deleteDuplicates(ListNode* head) {\n        ListNode* dummyHead = new ListNode(0);\n        dummyHead->next = head;\n        ListNode* validatedPtr = dummyHead;\n        int actElement = 0;\n        while(head!=nullptr){\n            ++actElement;\n            while(head->next!=nullptr && head->next->val == head->val){\n                ++actElement;\n                head = head->next;\n            }\n            if (actElement==1){\n                validatedPtr->next = head;\n                validatedPtr = validatedPtr->next;\n            }\n            /*\n                @_: if actElement >1, validatedPtr doesn't move\n                @_: dummyHead list is dominated by dummyHead and validatedPtr ONLY.\n                \n            */\n            head = head->next;    \n            actElement = 0;\n        }\n        validatedPtr->next = nullptr;\n        return dummyHead->next;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

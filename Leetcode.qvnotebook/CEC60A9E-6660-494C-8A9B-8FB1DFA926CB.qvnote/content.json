@@ -1,0 +1,18 @@
+{
+  "title": "141. Linked List Cycle",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 141 Linked List Cycle\n\n## Description\n> Given a linked list, determine if it has a cycle in it.\n>\n> Follow up:\n> Can you solve it without using extra space?\n\n## Solution\n- **Linked List**\n- ...\n\n\n### Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    bool hasCycle(ListNode *head) {\n        //@ two pointers\n        ListNode* ptr1 = head;\n        ListNode* ptr2 = head;\n        \n        while(ptr1!=nullptr&&ptr2!=nullptr&&ptr1->next!=nullptr&&ptr2->next!=nullptr&&ptr2->next->next!=nullptr){\n            ptr1 = ptr1->next;\n            ptr2 = ptr2->next->next;\n            if(ptr1 == ptr2) return true;\n        }\n        return false;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

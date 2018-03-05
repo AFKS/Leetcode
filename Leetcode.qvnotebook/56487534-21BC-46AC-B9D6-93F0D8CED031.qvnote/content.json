@@ -1,0 +1,18 @@
+{
+  "title": "079. Word Search",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 079 Word Search\n- **Backtracking**\n\n## Description\n![IMAGE](quiver-image-url/9C76AB1C894997B8BAAC1C3063FBB328.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Backtracking**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool exist(vector<vector<char>>& board, string word) {\n        if(board.size()==0 || board[0].size()==0 )\n            return true;\n        \n        for(int i=0; i<board.size(); i++){\n            for(int j=0; j<board[0].size(); j++){\n                if(check(board, word, i, j))\n                    return true;\n            }\n        }\n        return false;\n    }\n    \n    bool check(vector<vector<char>>& board, string word, int i, int j){\n        if(word.length()==0)\n            return true;\n        if(i<0 || j<0 ||i>=board.size() ||j>=board[0].size())\n            return false;\n        if(word[0]==board[i][j]){\n            char c = word[0];\n            board[i][j]='\\\\0';\n            if(check(board,word.substr(1), i+1, j)||\n                check(board,word.substr(1), i-1, j)||\n                check(board,word.substr(1), i, j+1)||\n                check(board,word.substr(1), i, j-1))\n                return true;\n            board[i][j]=c;\n        }\n        return false;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

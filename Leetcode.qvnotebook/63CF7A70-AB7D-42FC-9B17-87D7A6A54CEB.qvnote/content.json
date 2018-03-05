@@ -1,0 +1,18 @@
+{
+  "title": "056. Merge Intervals",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 056 Merge Intervals\n- **Sort**+array\n\n## Description\n![IMAGE](quiver-image-url/A548C4D06573F88A59B6F6B07738216C.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Greedy**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for an interval.\n * struct Interval {\n *     int start;\n *     int end;\n *     Interval() : start(0), end(0) {}\n *     Interval(int s, int e) : start(s), end(e) {}\n * };\n */\nclass Solution {\npublic:\n    vector<Interval> merge(vector<Interval>& intervals) {\n        vector<Interval> result;\n        \n        sort(intervals.begin(), intervals.end(), [](const Interval & a, const Interval & b){ \n            return a.start < b.start; \n        });\n        \n        for (int i=0; !intervals.empty()&&i<=intervals.size()-1; ++i){\n            Interval temp = intervals[i];\n            while (i+1<=intervals.size()-1 && intervals[i+1].start<=temp.end){\n                temp.end = temp.end>intervals[i+1].end?temp.end:intervals[i+1].end;\n                ++i;\n            }\n            result.push_back(temp);\n        }\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

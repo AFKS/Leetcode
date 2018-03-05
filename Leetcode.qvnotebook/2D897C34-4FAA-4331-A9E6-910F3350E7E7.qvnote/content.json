@@ -1,0 +1,18 @@
+{
+  "title": "016. 3Sum Closest",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 016 3Sum Closest\n\n- **Two Pointers**\n\n## Description\n![IMAGE](quiver-image-url/9B37035BD3BA49F8A68721AE4E10E200.jpg)\n\n## 1. Thought line\n\n## 2. Two Pointers"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int threeSumClosest(vector<int>& nums, int target) {\n        \n        if (nums.size() < 3) return 0;\n        sort(nums.begin(), nums.end());\n        int N = nums.size(), sum = 0, dif = INT_MAX;\n        for (int i = 0; i <= N-3; ++i){\n            if (i > 0 && nums[i-1] == nums[i]) continue;\n            int front = i+1, tail = N-1;\n            while(front < tail){\n                int sum_temp = nums[i] + nums[front] + nums[tail];\n                if (sum_temp == target) return target;\n                else{\n                    if (abs(sum_temp - target)<dif){\n                        dif = abs(sum_temp - target);\n                        sum = nums[i] + nums[front] + nums[tail];\n                    }\n                    if(sum_temp<target) {\n                        while(front+1 < tail && nums[front+1] == nums[front]) ++front;\n                        ++front;\n                    }\n                    else{\n                        while(tail-1 >front && nums[tail-1] == nums[tail]) --tail;\n                        --tail;\n                    }\n                }\n            }\n        }\n        return sum;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "111. Minimum Depth of Binary Tree",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 111 Minimum Depth of Binary Tree\n- **Depth-first Search** + Tree \n- **Breath-first Search** + Tree + Queue\n\n## Description\n![IMAGE](quiver-image-url/64FD86B6D1B85D89139692CE5D056C59.jpg)\n\n## 1. Thought line\n- The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.\n- The key is to find the LEAF node."
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 2. **Depth-first Search** + Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\n\nclass Solution {\nprivate:\n    void depthFirstSearchMinDepth(TreeNode* node, int& res, int depOfNode){\n        if (node == nullptr) return;\n        ++depOfNode;\n        if (node->left==nullptr && node->right==nullptr && res>depOfNode) res = depOfNode;\n        depthFirstSearchMinDepth(node->left, res, depOfNode);\n        depthFirstSearchMinDepth(node->right, res, depOfNode);\n\n    }\npublic:\n    int minDepth(TreeNode* root) {\n        if (root == nullptr) return 0;\n        int res = INT_MAX;\n        depthFirstSearchMinDepth(root, res, 0);\n        return res;\n    }\n}\n"
+    },
+    {
+      "type": "markdown",
+      "data": "## 3. **Breadth-first Search** + Tree + Queue"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    int minDepth(TreeNode* root) {\n        if (root == nullptr) return 0;\n        \n        int curDep = 1; // When the root is not null, the minimal depth is 1.\n        queue<TreeNode*> que;\n        que.emplace(root);\n        \n        while(!que.empty()){\n            // detect if the next lay has both children\n            queue<TreeNode*> nextLay;\n            while (!que.empty()){\n                // find the leaf node\n                if (que.front()->left==nullptr && que.front()->right==nullptr)\n                    return curDep;\n                if (que.front()->left) nextLay.push(que.front()->left);\n                if (que.front()->right) nextLay.push(que.front()->right);\n                que.pop();\n            }\n            ++curDep;\n            que.swap(nextLay);\n        }\n        return curDep;\n    }\n};"
+    }
+  ]
+}

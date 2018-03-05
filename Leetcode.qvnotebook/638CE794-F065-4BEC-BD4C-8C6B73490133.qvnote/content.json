@@ -1,0 +1,14 @@
+{
+  "title": "134. Gas Station",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 134. Gas Station \n- **Greedy**\n\n## Description\n![IMAGE](quiver-image-url/65D9707A3CA61376D9EFFA650B81CC91.jpg)\n\n## 1. Thought line\n![IMAGE](quiver-image-url/CC8546DB710E02EF70F363C1EC0FF312.jpg)\n\n\n## 2. **Greedy**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {\n        int candidateRes = 0;\n        int curGas = 0, netGas = 0;\n        for(int i = 0; i<=gas.size()-1; ++i){\n            netGas += gas[i] - cost[i];\n            curGas += gas[i] - cost[i];\n            if (curGas<0){\n                curGas = 0;\n                candidateRes = i+1;\n            }\n        }\n        if (netGas<0) return -1;\n        return candidateRes;\n    }\n};"
+    }
+  ]
+}

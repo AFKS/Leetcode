@@ -1,0 +1,18 @@
+{
+  "title": "019. Remove Nth Node From End of List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 019 Remove Nth Node From End of List\n\n- **Linked List**+**Two Pointers**\n\n## Description\n![IMAGE](quiver-image-url/D290AC3DB1BC2B468667EB43EB16F978.jpg)\n\n## 1. Thought Line\n\n\n## 2. **Linked List**+**Two Pointers**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* removeNthFromEnd(ListNode* head, int n) {\n        int sizeList = 0;\n        \n        // calculate the total size of list\n        ListNode* node = head;\n        while(node!=nullptr){\n            ++sizeList;\n            node = node->next;\n        }\n        if(n<1 || n>sizeList) return head;\n        \n        // find the node at N+1 from end (sizeList - N from head)\n        ListNode* dummyHead = new ListNode(0);\n        dummyHead->next = head;\n        int count = 0;\n        ListNode* findTheNodeBeforeDeleteNode = dummyHead;\n        ListNode* findTheNodeOfDeleteNode = head;\n        while(count<sizeList - n){\n            findTheNodeBeforeDeleteNode = findTheNodeBeforeDeleteNode->next;\n            findTheNodeOfDeleteNode = findTheNodeOfDeleteNode->next;\n            ++count;\n        }\n        findTheNodeBeforeDeleteNode->next = findTheNodeOfDeleteNode->next;\n        findTheNodeOfDeleteNode->next = nullptr;\n        return dummyHead->next;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "027. Remove Element",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 027 Remove Element\n- **Two pointers**+array\n\n## Description\n![IMAGE](quiver-image-url/26DF1380549976441094A781B6B93227.jpg)\n## 1. Thought line\n\n\n## 2. **Two pointers**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int removeElement(vector<int>& nums, int val) {\n        for (auto st = nums.begin(); st !=nums.end(); ){\n            if (*st == val)\n                nums.erase(st);\n            else ++st;\n        }\n        return nums.size();\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

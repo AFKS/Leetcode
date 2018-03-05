@@ -1,0 +1,18 @@
+{
+  "title": "070. Climbing Stairs",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 070 Climbing Stairs\n- **Dynamic Programming**\n\n## Description\n![IMAGE](quiver-image-url/BAFED72A6D1528591C10934696554346.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Dynamic Programming**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int climbStairs(int n) {\n        // f[n] = f[n-1] + f[n-2]\n        vector<int> ladder(n+1);\n        ladder[1] = 1, ladder[2] = 2;\n        for (int i = 3; i<=n; ++i){\n            ladder[i] = ladder[i-1] + ladder[i-2];\n        }\n        return ladder[n];\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

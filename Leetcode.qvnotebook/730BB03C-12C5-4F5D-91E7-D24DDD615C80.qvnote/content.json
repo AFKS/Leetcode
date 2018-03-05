@@ -1,0 +1,18 @@
+{
+  "title": "250. Count Univalue Subtrees",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 250 Count Univalue Subtrees\n## Description\n>Given a binary tree, count the number of uni-value subtrees.\n>A Uni-value subtree means all nodes of the subtree have the same value.\n>For example:\n>             5\n>            / \\\n>           1   5\n>          / \\   \\\n>         5   5   5\n> return 4.\n\n## Solution\n- **Tree**\n- **...**\n\n### Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nbool isUnivalSubtrees(TreeNode* node, int& res){\n    if (node==nullptr) return true;\n    else if (node->left==nullptr && node->right==nullptr){\n        res = res+1;\n        return true;\n    }\n    else{\n        bool left_flag = (node->left==nullptr)?true:\n      \t\t\tisUnivalSubtrees(node->left,res);\n        bool right_flag = (node->right==nullptr)?true:\n      \t\t\tisUnivalSubtrees(node->right, res);\n        int left_val = (node->left==nullptr)?node->val:node->left->val;\n        int right_val = (node->right==nullptr)?node->val:node->right->val;\n        if(left_flag&&right_flag&&\n           \t\tleft_val==right_val&&right_val==node->val)\n        {\n            res = res+1;\n            return true;\n        }else\n            return false;\n    }\n}\n\n\nclass Solution {\npublic:\n    int countUnivalSubtrees(TreeNode* root) {\n        int res=0;\n        isUnivalSubtrees(root, res);\n        return res;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

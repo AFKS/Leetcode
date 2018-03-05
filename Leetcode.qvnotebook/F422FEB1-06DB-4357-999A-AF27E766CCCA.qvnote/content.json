@@ -1,0 +1,18 @@
+{
+  "title": "217. Contains Duplicate",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 217 Contains Duplicate\n## Description\n>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.\n\n\n## Solution\n- **Hash Table**\n- **Array**\n\n### Hash Table"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool containsDuplicate(vector<int>& nums) {\n        set<int> s;\n        for (auto v: nums){\n            if(s.find(v)!=s.end())\n                return true;\n            else\n                s.insert(v);\n        }\n        return false;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

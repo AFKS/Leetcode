@@ -1,0 +1,18 @@
+{
+  "title": "081. Search in Rotated Sorted Array II",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 081 Search in Rotated Sorted Array II\n- **Binary Search**+Array\n\n## Description\n![IMAGE](quiver-image-url/DCCAB75F681E6C4F35EC502C6A05E047.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Binary Search**+Array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void binarySearch(vector<int>& nums, int target, int st, int ed, bool& res){\n        // finish process condition\n        if (st>ed) return;\n        if (target<nums[st]||target>nums[ed]) return;\n        \n        // no target\n        if (st==ed && nums[st]!=target) return;\n        \n        // find target\n        if (st==ed && nums[st]==target) res = true;\n        \n        // keep finding process\n        else{\n            int midSt = (st+ed)/2, midEd = (st+ed)/2;\n             if (nums[midSt]==target) {\n                 res = true;\n                 return;\n             }\n            // find the bottle and top elements as same value of nums[mid];\n            while (midSt-1>=0 && nums[midSt]==nums[midSt-1])\n                --midSt;\n            while (midEd + 1<=nums.size()-1 && nums[midEd]==nums[midEd+1])\n                ++midEd;\n            if (target<nums[midSt])\n                binarySearch(nums, target, st, midSt-1, res);\n            else\n                binarySearch(nums, target, midEd+1, ed, res);\n        }\n    }\n    \npublic:\n    bool search(vector<int>& nums, int target) {\n        bool res = false;\n        int pivot =0;\n        if (nums.empty()) return false;\n        // find pivot\n        for (int i = 1; !nums.empty() && i<=nums.size()-1; ++i){\n            if (nums[i-1]>nums[i]){\n                pivot = i;\n                break;\n            }\n        }\n        // process binary search on left half \n        binarySearch(nums, target, 0, pivot-1, res);\n        // process binary search on right half\n        binarySearch(nums, target, pivot, nums.size()-1, res);\n        return res;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

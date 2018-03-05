@@ -1,0 +1,18 @@
+{
+  "title": "014. Longest Common Prefix",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 014 Longest Common Prefix\n\n-  **string**\n\n\n## Description\n![IMAGE](quiver-image-url/7A2E634E260ED7E89A764A698B2F023D.jpg)\n\n## 1. Thought Line\n\n\n\n## 2.  **string**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    string longestCommonPrefix(vector<string>& strs) {\n        string prefix = \"\";\n        int idx = 0;\n        while(true&&!strs.empty()){\n            for(int i=0; i<strs.size(); i++){\n                if(idx >= strs[i].size() ||\n                   (i > 0 && strs[i][idx] != strs[i-1][idx]))\n                  return prefix;\n            }\n            prefix+=strs[0][idx];\n            ++idx;\n        }\n        return prefix;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

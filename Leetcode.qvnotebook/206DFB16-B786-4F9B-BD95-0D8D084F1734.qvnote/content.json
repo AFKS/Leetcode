@@ -1,0 +1,18 @@
+{
+  "title": "024. Swap Node in Pairs",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 024 Swap Nodes in Pairs\n\n- **Linked List**\n\n## Description\n![IMAGE](quiver-image-url/0F6E015FB50AB3A28365972D63CE7AE7.jpg)\n\n## 1. Thought line\n\n\n## 2. Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* swapPairs(ListNode* head) {\n        ListNode* dummyHead = new ListNode (0);\n        dummyHead->next = head;\n        ListNode* ptrBeforeOdd = dummyHead;\n        ListNode* ptrOdd = dummyHead;\n        ListNode* ptrEven = dummyHead;\n        while (ptrBeforeOdd !=nullptr){\n            // Only when odd and even both exist, continue\n            if (ptrOdd->next != nullptr && ptrOdd->next->next !=nullptr){\n                ptrOdd = ptrOdd->next;\n                ptrEven = ptrOdd->next;\n                ptrOdd->next = ptrEven->next;\n                ptrEven->next = ptrOdd;\n                ptrBeforeOdd->next = ptrEven;\n                ptrBeforeOdd = ptrEven = ptrOdd;\n            }\n            else break;\n        }\n        return dummyHead->next;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

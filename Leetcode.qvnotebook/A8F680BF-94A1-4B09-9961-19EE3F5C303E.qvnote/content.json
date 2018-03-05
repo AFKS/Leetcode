@@ -1,0 +1,18 @@
+{
+  "title": "036. Valid Sudoku",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 036 Valid Sudoku\n- **Hash Table**+array\n\n## Description\n![IMAGE](quiver-image-url/8F231F65AEB0155479FDD43BB9922E52.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Hash Table**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool isValidSudoku(vector<vector<char>>& board) {\n        bool usedRow[9][9]={false}, usedColumn[9][9]={false}, usedSubBox[9][9]={false};\n        \n        for (int i = 0; i<=board.size()-1; ++i){\n            for (int j = 0; j<=board[i].size()-1; ++j){\n                if (board[i][j]!='.'){\n                    int num = board[i][j] - '0' - 1;\n                    if (usedRow[i][num]||usedColumn[j][num]||usedSubBox[i/3 * 3 + j/3][num])\n                        return false;\n                    usedRow[i][num] = usedColumn[j][num] = usedSubBox[i/3 *3 + j/3][num] = true;\n                }\n            }\n        }\n        return true;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

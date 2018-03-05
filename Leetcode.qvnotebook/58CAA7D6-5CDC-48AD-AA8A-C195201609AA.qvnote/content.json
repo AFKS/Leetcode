@@ -1,0 +1,18 @@
+{
+  "title": "090. Subsets II",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 090 Subsets II\n- **Backtracking** + Array\n\n## Description\n![IMAGE](quiver-image-url/88ECE4D2CCB2FCE99F46B6C3069903BF.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Backtracking** + Array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void backtrackingSubsets(vector<int>& nums, int st, vector<vector<int>>& result, vector<int>& temp){\n        if (st>nums.size()-1) return;\n        for (int i = st; i<=nums.size()-1; ++i){\n            temp.push_back(nums[i]);\n            result.push_back(temp);\n            backtrackingSubsets(nums, i+1, result, temp);\n            temp.pop_back();\n            while(i+1<=nums.size()-1 && nums[i+1] == nums[i])\n                ++i;\n        }\n        \n    }\npublic:\n    vector<vector<int>> subsetsWithDup(vector<int>& nums) {\n        vector<vector<int>> result = {{}};\n        vector<int> temp;\n        sort(nums.begin(), nums.end());\n        backtrackingSubsets(nums, 0, result, temp);\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

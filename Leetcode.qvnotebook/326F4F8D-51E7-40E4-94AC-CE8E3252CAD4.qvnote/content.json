@@ -1,0 +1,14 @@
+{
+  "title": "131. Palindrome Partitioning",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 131. Palindrome Partitioning\n- **BackTracking**\n\n## Description\n![IMAGE](quiver-image-url/78217B69644F4555DDDD968BFDB3CCDA.jpg)\n\n## 1. Thought line\n\n## 2. **BackTracking**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    bool isPalindrome(string s){\n        if (s.empty()) return false;\n        int a = 0, b = s.size()-1;\n        while (a<=b){\n            if (s[a]!=s[b]) return false;\n            ++a, --b;\n        }\n        return true;\n    }\n    \n    void backtrackingPartition(string s, int st, vector<vector<string>>& result, vector<string> tempRes){\n        if (st>s.size()-1){\n            result.push_back(tempRes);\n            return;\n        }\n        string tempStr = \"\";\n        for (int cutSpot = st; cutSpot<=s.size()-1; ++cutSpot){\n            tempStr +=s[cutSpot];\n            if (isPalindrome(tempStr)){\n                tempRes.push_back(tempStr);\n                backtrackingPartition(s, cutSpot+1, result, tempRes);\n                tempRes.pop_back();\n            }\n        }\n    }\npublic:\n    vector<vector<string>> partition(string s) {\n        vector<vector<string>> result(0);\n        vector<string> temp(0);\n        if (s.empty()) return result;\n        backtrackingPartition(s, 0, result, temp);\n        return result;\n    }\n};"
+    }
+  ]
+}

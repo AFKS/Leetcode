@@ -1,0 +1,18 @@
+{
+  "title": "061. Rotate List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 061 Rotate List\n- **Two pointers**+Linked List\n\n## Description\n![IMAGE](quiver-image-url/BCAF8FB06D82A8608061A99B888B27E2.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Two pointers**+Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* rotateRight(ListNode* head, int k) {\n        if (head==nullptr || head->next==nullptr) return head;\n        \n        // Find the size of list: N\n        int N = 0;\n        ListNode* dummyHead = new ListNode(0);\n        dummyHead->next = head;\n        ListNode* ptrTemp = dummyHead->next;\n        ListNode* listTail = dummyHead->next;\n        while(ptrTemp!=nullptr){\n            ++N;\n            if (ptrTemp->next == nullptr)\n                listTail = ptrTemp;\n            ptrTemp = ptrTemp->next;\n        }\n        \n        // Get real k \n        if (k>N) k = k%N;\n        if (k==0) return head;\n        \n        // Get the new head and the new tail\n        int count = 0;\n        ListNode* newTail = dummyHead;\n        while(newTail!=nullptr && count<N-k){\n             newTail = newTail->next;\n            ++count;\n        }\n        \n        ListNode* newHead = newTail->next;\n        \n        // shape the list\n        newTail->next = nullptr;\n        listTail->next = dummyHead->next;\n        dummyHead->next = newHead;\n        return newHead;\n    \n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "028. Implement strStr()",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 027 Remove Element\n- **Two pointers**+array\n\n## Description\n![IMAGE](quiver-image-url/AE73953E1E9E77525E023CE85881A407.jpg)\n## 1. Thought line\n1. if haystack is empty, return -1;\n2. if needle is empty, return 0;\n\n## 2. **Two pointers**+string"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int strStr(string haystack, string needle) {\n        if (needle.empty()) return 0;\n        if (haystack.empty()) return -1;\n\n        int n = haystack.size(), m = needle.size();\n        for (int i = 0; i<=n-m; ++i){\n            if (haystack[i] == needle[0]){\n                bool find = true;\n                for (int j = 0; find && j<=m-1; ++j){\n                    if (haystack[i+j]!=needle[j]) find = false;\n                }\n                if (find) return i;\n            }\n        }\n        return -1;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "237 Delete Node in a Linked List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 237 Delete Node in a Linked List\n## Description\n> Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.\n>\n> Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the third node with value 3, the linked list should become 1 -> 2 -> 4 after calling your function.\n\n## Solution\n- **Linked List**\n- ​\n### Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    void deleteNode(ListNode* node) {\n        if (node==nullptr || node->next==nullptr) return;\n        node->val = node->next->val;\n        node->next = node->next->next;\n        return;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

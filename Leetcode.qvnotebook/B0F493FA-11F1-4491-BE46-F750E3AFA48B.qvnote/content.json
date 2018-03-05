@@ -1,0 +1,14 @@
+{
+  "title": "257. Binary Tree Paths",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 257 Binary Tree Paths\n\n## Description\n\n>Given a binary tree, return all root-to-leaf paths.\n>\n>For example, given the following binary tree:\n>\n>```\n>   1\n> /   \\\n>2     3\n> \\\n>  5\n>```\n>\n>All root-to-leaf paths are:\n>\n>```\n>[\"1->2->5\", \"1->3\"]\n>```\n>\n>\n\n## Solution\n\n-  **Tree**\n-  **Depth-first Search**\n\n\n### Depth-first Search\n"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\n\nvoid binaryTreePaths_fct(TreeNode* node, vector<string>& res, int pre_dep, string temp_str){\n    if (node==nullptr) return;\n    \n    string node_str = to_string(node->val);\n    temp_str += (pre_dep==-1)?node_str:\"->\"+node_str;\n    \n    if (node->left==nullptr&&node->right==nullptr) res.push_back(temp_str);\n    else{\n        binaryTreePaths_fct(node->left,res,pre_dep+1,temp_str);\n        binaryTreePaths_fct(node->right,res,pre_dep+1,temp_str);\n    }\n}\n\nclass Solution {\npublic:\n    vector<string> binaryTreePaths(TreeNode* root) {\n        vector<string> res;\n        int pre_dep = -1;\n        string temp_str=\"\";\n        binaryTreePaths_fct(root,res,pre_dep,temp_str);\n        return res;\n    }\n};"
+    }
+  ]
+}

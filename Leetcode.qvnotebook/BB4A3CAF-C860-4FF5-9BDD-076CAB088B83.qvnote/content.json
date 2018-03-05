@@ -1,0 +1,32 @@
+{
+  "title": "018. 4Sum",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 018 4Sum\n\n- **Hash Table**\n- **Two Pointers**\n\n## Description\n![IMAGE](quiver-image-url/922DF1C8C1DAD689FC5B7D90D5CE39AF.jpg)\n\n## 1. Thought line\n\n## 2 Two Pointers \n### 2.1 Without optimization"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    vector<vector<int>> fourSum(vector<int>& nums, int target) {\n        vector<vector<int>> result(0);\n        if (nums.empty() || nums.size()<4) return result;\n        sort(nums.begin(),nums.end());\n        int a = 0,b = 0,c = 0,d = 0;\n        for (int i=0; i<=nums.size()-4; ++i){\n            for(int j = i+1; j<=nums.size()-3; ++j){\n                for (int k = j+1; k<=nums.size()-2; ++k){\n                    for (int p = k+1; p<=nums.size()-1; ++p){\n                        if (target == (nums[i] + nums[j] + nums[k] + nums[p]))\n                        {\n                            result.push_back({nums[i], nums[j], nums[k], nums[p]});\n                        }\n                        while(p+1 <=nums.size()-1 && nums[p+1]==nums[p])\n                            ++p;\n                    }\n                    while(k+1 <=nums.size()-2 && nums[k+1]==nums[k])\n                        ++k;\n                }\n                while(j+1 <=nums.size()-3 && nums[j+1]==nums[j])\n                    ++j;\n            }\n            while(i+1 <= nums.size()-4 && nums[i+1]==nums[i])\n                ++i;\n        }\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "\n\n### 2.2 Two Pointers with optimization"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "# 12 ms\nclass Solution {\npublic:\n    vector<vector<int>> fourSum(vector<int>& nums, int target) {\n        vector<vector<int>> total;\n        int n = nums.size();\n        if(n<4)  return total;\n        sort(nums.begin(),nums.end());\n      \n        for(int i=0;i<n-3;i++)\n        {\n            // move forward if it's duplicate number\n            //if(i>0&&nums[i]==nums[i-1]) continue; \n            \n            // jump out\n            if(nums[i]+nums[i+1]+nums[i+2]+nums[i+3]>target) break;\n            // need bigger(new) nums[i]\n            if(nums[i]+nums[n-3]+nums[n-2]+nums[n-1]<target) continue;  \n            \n            for(int j=i+1;j<n-2;j++)\n            {\n                if(j>i+1 && nums[j]==nums[j-1]) continue;\n                \n                if(nums[i]+nums[j]+nums[j+1]+nums[j+2]>target) break;\n                if(nums[i]+nums[j]+nums[n-2]+nums[n-1]<target) continue;\n                \n                int left=j+1,right=n-1;\n                while(left<right){\n                    int sum=nums[left]+nums[right]+nums[i]+nums[j];\n                    if(sum<target) left++;\n                    else if(sum>target) right--;\n                    else{\n                        total.push_back(\n                          vector<int>{nums[i],nums[j],nums[left],nums[right]});\n                      do{left++;}while(nums[left]==nums[left-1]&&left<right);\n                      do{right--;}while(nums[right]==nums[right+1]&&left<right);\n                    }\n                }\n            }\n            while(i+1<n-3 && nums[i+1]==nums[i])\n                ++i;\n        }\n        return total;\n    }\n};\n\n/*\n1. make limited condition\nuse nums[i] as the core\n(1) if sum of nums{[i,...,i+n]} > target\nfinish\n(2) if sum of nums{[i-n,...,i]}< target\nneed bigger ones\n\n2. left and right pointers to perform approximationss\n\n*/"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 3.Hash Table"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "074. Search a 2D Matrix",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 074 Search a 2D Matrix\n- **Binary Search**+array\n\n## Description\n![IMAGE](quiver-image-url/4F522DD1DBD32D8E4EF3CF49791FF746.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Binary Search**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void binarySearchMatrix(vector<vector<int>>& matrix, int st, int ed, int target, bool& res){\n        if (matrix.empty()||st>ed||res) return;\n        \n        if (st==ed){\n            // corner case\n            for (int i = 0; !matrix[st].empty()&&i<=matrix[st].size()-1; ++i)\n                if (matrix[st][i]==target) \n                    res = true;\n            return;\n        }\n        int midRow = (st+ed)/2, n = matrix[midRow].size()-1;\n        if (target>matrix[midRow][n])\n            binarySearchMatrix(matrix, midRow+1, ed, target, res);\n        else\n            binarySearchMatrix(matrix, st, midRow, target, res);\n\n    }\npublic:\n    bool searchMatrix(vector<vector<int>>& matrix, int target) {\n        bool res = false;\n        binarySearchMatrix(matrix, 0, matrix.size()-1, target, res);\n        return res;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

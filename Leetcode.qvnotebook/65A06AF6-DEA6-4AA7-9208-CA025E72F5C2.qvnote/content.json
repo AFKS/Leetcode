@@ -1,0 +1,18 @@
+{
+  "title": "144. Binary Tree Preorder Traversal",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 144 Binary Tree Preorder Traversal\n\n## Description\n> Given a binary tree, return the preorder traversal of its nodes' values. For example: Given binary tree {1,#,2,3},\n> ```\n>  1\n>   \\\n>    2\n>   /\n>  3\n> ```\n\n\n## Solution\n- **Stack+iteratively**\n- **Hash Table**\n- **Tree**\n\n\n### Stack"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    vector<int> preorderTraversal(TreeNode* root) {\n        stack<TreeNode*> stk;\n        TreeNode* curNode = root;\n        vector<int> res;\n        while(curNode || !stk.empty()){\n            if (curNode){\n                res.push_back(curNode->val);\n                if(curNode->right) \n                    stk.push(curNode->right);\n                curNode = curNode->left;\n            }\n            else{\n                curNode = stk.top();\n                stk.pop();\n            }\n        }\n        return res;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

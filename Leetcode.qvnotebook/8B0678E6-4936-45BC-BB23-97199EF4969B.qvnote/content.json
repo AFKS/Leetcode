@@ -1,0 +1,18 @@
+{
+  "title": "147. Insertion Sort List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 147 Insertion Sort List\n\n## Description\n> Sort a linked list using insertion sort.\n## Solution\n- **Linked List**\n- **Insert Sorts**\n\n\n### Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* insertionSortList(ListNode* head) {\n        ListNode* dummyHead = new ListNode(INT_MIN);\n        while(head!=nullptr){\n            ListNode* ptr = dummyHead;\n            ListNode* insertSport = ptr;\n            ListNode* insertNext = ptr->next;\n            while (ptr!=nullptr){\n                ListNode* cur = ptr;\n                ListNode* next = ptr->next;\n                if (next==nullptr){\n                    ptr->next = new ListNode(head->val);\n                    break;\n                }\n                else if(head->val>=cur->val&&head->val<=next->val){\n                    ptr->next = new ListNode(head->val);\n                    ptr->next->next = next;\n                    break;\n                }\n                ptr = ptr->next;\n            }\n            head = head->next;;\n        }\n        return dummyHead->next;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

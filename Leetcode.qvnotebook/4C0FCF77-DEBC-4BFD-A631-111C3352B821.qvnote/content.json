@@ -1,0 +1,18 @@
+{
+  "title": "015. 3Sum",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 015 3Sum\n\n- **Two Pointers**\n\n## Description\n![IMAGE](quiver-image-url/EA8FF65E23B887B2579180FB60595645.jpg)\n\n## 1. Thought line\n\n## 2. Two Pointers with optimization"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    vector<vector<int>> threeSum(vector<int>& nums) {\n        vector<vector<int>> result;\n        if (nums.size()<3) return result;\n        \n        int N = nums.size();\n        sort(nums.begin(),nums.end());\n        \n        for (int i=0; i<=N-3; ++i){\n            if (i>0 && nums[i]==nums[i-1]) continue;\n            if (nums[i]+nums[N-1]+nums[N-2]<0) continue;\n            if (nums[i]+nums[i+1]+nums[i+2]>0) break;\n            \n            int front = i+1, tail = N-1;\n            while (front<tail){\n                if (nums[i] + nums[front] + nums[tail] == 0) {\n                    result.push_back({nums[i], nums[front], nums[tail]});\n                    while (front+1 < tail && nums[front] == nums[front+1]) \n                      ++front;\n                    while (tail-1 >front && nums[tail] == nums[tail-1]) \n                      --tail;\n                    ++front, --tail;\n                }else if(nums[i] + nums[front] + nums[tail] < 0) ++front;\n                else --tail;\n            }\n        }\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

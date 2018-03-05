@@ -1,0 +1,18 @@
+{
+  "title": "136. Single Number",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 136 Single Number\n\n## Description\n> Given an array of integers, every element appears twice except for one. \n> Find that single one.\n> Note:\n> Your algorithm should have a linear runtime complexity. Could you\n> implement it without using extra memory?\n\n\n## Solution\n- **Hash Table**\n- **Bit Manipulate**\n- ...\n\n### Hash Table"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int singleNumber(vector<int>& nums) {\n        int res=0;\n        map<int,int> imap;\n        set<int> iset;\n        for (int i=0; !nums.empty()&&i<=nums.size()-1;++i){\n            ++imap[nums[i]];\n            if (iset.find(nums[i])==iset.end()) iset.insert(nums[i]);\n        }\n        for (auto c: iset)\n            if (imap[c]==1) res = c;\n        return res;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

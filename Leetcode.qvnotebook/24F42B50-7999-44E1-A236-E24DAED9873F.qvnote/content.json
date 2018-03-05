@@ -1,0 +1,14 @@
+{
+  "title": "108. Convert Sorted Array to Binary Search Tree",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 108 Convert Sorted Array to Binary Search Tree\n- **Depth-first Search** + Tree\n\n## Description\n![IMAGE](quiver-image-url/A0300D80C130AC5AD8C1549B975B6BB5.jpg)\n\n## 1. Thought line\n- Height-balanced BST\n\n## 2. **Depth-first Search** + Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nvoid arrayRootFind(vector<int>& nums, int st, int ed, TreeNode* node, string str = \"toRightChild\"){\n    if (st>ed) return;\n    \n    int mid = (st+ed)/2;\n    \n    if (str == \"toRightChild\"){\n        node->right = new TreeNode(nums[(st+ed)/2]);\n        arrayRootFind(nums, st, mid-1, node->right, \"toLeftChild\");\n        arrayRootFind(nums, mid+1, ed, node->right, \"toRightChild\");\n    }\n    else if (str == \"toLeftChild\"){\n        node->left = new TreeNode(nums[(st+ed)/2]);\n        arrayRootFind(nums, st, mid-1, node->left, \"toLeftChild\");\n        arrayRootFind(nums, mid+1, ed, node->left, \"toRightChild\");\n    }\n}\n\nclass Solution {\npublic:\n    TreeNode* sortedArrayToBST(vector<int>& nums) {\n        if (nums.empty()) return nullptr;\n        TreeNode* dummyHead = new TreeNode(INT_MIN);\n        arrayRootFind(nums, 0, nums.size()-1, dummyHead);\n        return dummyHead->right;\n    }\n};"
+    }
+  ]
+}

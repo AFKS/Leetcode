@@ -1,0 +1,18 @@
+{
+  "title": "053. Maximum Subarray",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 053 Maximum Subarray\n- **Divide and Conquer**+array\n- **Dynamic Programming**+array\n\n## Description\n![IMAGE](quiver-image-url/1E40E4C20D33B442C276DB81EB2505C3.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Divide and Conquer**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    int divideAndConquerMaxSubArray(vector<int>& nums, int st, int ed){\n        if (st>ed) return INT_MIN;\n        if (st==ed) return nums[st];\n        int mid = (st+ed)/2; \n        int lf_maxSubArraySum = divideAndConquerMaxSubArray(nums, st, mid-1);\n        int rt_maxSubArraySum = divideAndConquerMaxSubArray(nums, mid+1, ed);\n        \n        // Calculate the possible result crossing middle point.\n        int midToLeft = INT_MIN, midToright = INT_MIN;\n        for (int i = mid, sum=0; i>=st; --i){\n            sum+=nums[i];\n            midToLeft = midToLeft>sum?midToLeft:sum;\n        }\n        for (int i = mid, sum=0; i<=ed; ++i){\n            sum+=nums[i];\n            midToright = midToright>sum?midToright:sum;\n        }\n        int mid_maxSubArraySum = midToLeft+midToright-nums[mid];\n        return max(lf_maxSubArraySum,max(rt_maxSubArraySum,mid_maxSubArraySum));\n    }\n\npublic:\n    int maxSubArray(vector<int>& nums) {\n        return divideAndConquerMaxSubArray(nums, 0, nums.size()-1);\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

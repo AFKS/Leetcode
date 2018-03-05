@@ -1,0 +1,18 @@
+{
+  "title": "034. Search for a Range",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 034 Search for a Range\n- **Binary Search**+array\n\n## Description\n![IMAGE](quiver-image-url/23823246D9240D9DE72DB37D64881D31.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Binary Search**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void binarySearchRange(vector<int>& nums, int target, int st, int ed, int& indexMin, int& indexMax){\n        if (st>ed) return;\n        if (target<nums[st] || target>nums[ed]) return;\n        if (st==ed && nums[st]!=target) return;\n        if (st==ed && nums[st] == target){\n            if (indexMin == -1 && indexMax == -1)\n                indexMin = indexMax = st;\n            else{\n                indexMin = st<indexMin?st:indexMin;\n                indexMax = st>indexMax?st:indexMax;\n            }\n        }\n        else{\n            int mid = (st+ed)/2;\n            binarySearchRange(nums, target, st, mid, indexMin, indexMax);\n            binarySearchRange(nums, target, mid+1, ed, indexMin, indexMax);\n        }\n    }\n    \npublic:\n    vector<int> searchRange(vector<int>& nums, int target) {\n        int indexMin = -1, indexMax = -1;\n        binarySearchRange(nums, target, 0, nums.size()-1, indexMin, indexMax);\n        return vector<int>{indexMin, indexMax};\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

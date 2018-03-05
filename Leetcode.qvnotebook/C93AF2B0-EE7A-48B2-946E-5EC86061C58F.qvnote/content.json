@@ -1,0 +1,18 @@
+{
+  "title": "078. Subsets",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 078 Subsets\n- **Backtracking**\n- **Bit Manipulation**\n\n## Description\n![IMAGE](quiver-image-url/520BA07770EBC60D69A6202021FEF1F2.jpg)\n\n## 1. Thought line\n(1)  When vector<int>& nums.empty(), result should be [ [] ].\n\n\n## 2. **Backtracking**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void backtrackingPowerSet(vector<vector<int>>& result, vector<int>& temp, int st, vector<int>& nums){\n        // put push action here for corner case_(1)\n        result.push_back(temp);\n        if (st>nums.size()-1) return;\n        for (int i = st; !nums.empty() && i<=nums.size()-1; ++i){\n            temp.push_back(nums[i]);\n            backtrackingPowerSet(result, temp, i+1, nums);\n            temp.pop_back();\n        }\n    }\npublic:\n    vector<vector<int>> subsets(vector<int>& nums) {\n        vector<vector<int>> result;\n        vector<int> temp;\n        if (nums.empty()) return result;\n        backtrackingPowerSet(result, temp, 0, nums);\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "## 3. **Bit Manipulation**"
+    }
+  ]
+}

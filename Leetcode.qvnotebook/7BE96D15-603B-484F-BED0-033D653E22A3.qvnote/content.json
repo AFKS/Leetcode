@@ -1,0 +1,18 @@
+{
+  "title": "252. Meeting Rooms",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 252 Meeting Rooms\n\n## Description\n> Given an array of meeting time intervals consisting of start and end times [[\n> s1,e1],[s2,e2],...] (si < ei), determine if a person could attend all \n> meetings.\n>\n> For example,\n> Given [[0, 30],[5, 10],[15, 20]],\n> return false.\n\n\n## Solution\n- **Sort**\n- ...\n\n\n### Sort"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for an interval.\n * struct Interval {\n *     int start;\n *     int end;\n *     Interval() : start(0), end(0) {}\n *     Interval(int s, int e) : start(s), end(e) {}\n * };\n */\nclass Solution {\nprivate:\n    static bool compare(Interval& Interval1, Interval& Interval2){\n        if (Interval1.start<Interval2.start)\n            return true;\n        else return false;\n        // return Interval1.start<Interval2.start\n    }\n    \n    bool overLap(Interval& Interval1, Interval& Interval2){\n        if (Interval1.end>Interval2.start)\n            return true;\n        else return false;\n    }\n    \npublic:\n    bool canAttendMeetings(vector<Interval>& intervals) {\n        vector<Interval> sortIntervals = intervals;\n        sort(sortIntervals.begin(),sortIntervals.end(),compare);\n        for(int i=1;!sortIntervals.empty()&&i<=sortIntervals.size()-1;++i){\n            if (overLap(sortIntervals[i-1],sortIntervals[i]))\n                return false;\n        }\n        return true;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

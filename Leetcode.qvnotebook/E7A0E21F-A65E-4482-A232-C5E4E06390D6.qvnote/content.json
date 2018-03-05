@@ -1,0 +1,18 @@
+{
+  "title": "021. Merge Two Sorted Lists",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 021 Merge Two Sorted Lists\n\n- **Linked List**\n- \n## Description\n![IMAGE](quiver-image-url/B8EF19559C6501375FB4C520A2018F20.jpg)\n\n## 1. Thought line\n\n## 2. Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {\n        \n        ListNode* dummyHead = new ListNode(0);\n        ListNode* ptr = dummyHead;\n        \n        while (l1 != nullptr || l2 !=nullptr){\n            if (l1==nullptr) {\n                ptr->next = l2;\n                break;\n            }\n            if (l2==nullptr) {\n                ptr->next = l1;\n                break;\n            }\n            int v1 = l1->val, v2 = l2->val;\n            ptr->next = (v1<=v2)?new ListNode(v1):new ListNode(v2);\n            l1 = (v1<=v2)?l1->next:l1;\n            l2 = (v1>v2)?l2->next:l2;\n            ptr = ptr->next;\n            \n        }\n        return dummyHead->next;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

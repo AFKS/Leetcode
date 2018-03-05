@@ -1,0 +1,18 @@
+{
+  "title": "064. Minimum Path Sum",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 064 Minimum Path Sum\n- **Dynamic Programming**+Array\n\n## Description\n![IMAGE](quiver-image-url/BA298D37653314DB7F126BA44558D505.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Dynamic Programming**+Array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int minPathSum(vector<vector<int>>& grid) {\n        if (grid.empty()) return 0;\n        int m = grid.size(), n = grid[0].size();\n        for (int i=0; i<=m-1; ++i){\n            for (int j=0; j<=n-1; ++j){\n                if (i==0 && j==0) continue;\n                else if (i==0) grid[i][j] += grid[i][j-1];\n                else if (j==0) grid[i][j] +=grid[i-1][j];\n                else grid[i][j] += min(grid[i][j-1],grid[i-1][j]);\n            }\n        }\n        return grid[m-1][n-1];\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

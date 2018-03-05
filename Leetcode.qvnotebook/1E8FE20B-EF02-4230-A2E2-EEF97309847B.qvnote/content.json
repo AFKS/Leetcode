@@ -1,0 +1,18 @@
+{
+  "title": "020. Valid Parentheses",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 020 Valid Parentheses\n\n- **Stack**\n- **String**\n\n## Description\n![IMAGE](quiver-image-url/410E540A5FC186E6EE2C69E9DC9BB821.jpg)\n\n## 1. Thought Line\n(1) char to string\n\n\n## 2. Stack"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool isValid(string s) {\n        stack<char> stk;\n        for (auto &c:s){\n            string temp = \"\"; // for char to string\n            if (!stk.empty() && \n                (temp+stk.top()+c==\"()\"||temp+stk.top()+c==\"{}\"||temp+stk.top()+c==\"[]\"))\n                stk.pop();\n            else stk.push(c);\n        }\n        return stk.empty()?true:false;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

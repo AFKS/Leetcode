@@ -1,0 +1,18 @@
+{
+  "title": "100. Same Tree",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 100 Same Tree\n- **Depth-first Search** + tree\n\n## Description\n![IMAGE](quiver-image-url/22496200CB695D653DCCA4CAD609C826.jpg)\n\n## 1. Thought line\n\n\n## 2. **Depth-first Search** + tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    bool isSameTree(TreeNode* p, TreeNode* q) {\n        if (p == nullptr && q == nullptr) \n            return true;\n        if (p != nullptr && q != nullptr)\n            return (p->val == q->val) && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);\n        return false;\n                 \n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

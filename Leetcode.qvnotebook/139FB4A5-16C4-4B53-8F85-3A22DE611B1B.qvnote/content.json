@@ -1,0 +1,22 @@
+{
+  "title": "005. Longest Palindromic Substring",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 005 Longest Palindromic Substring\n\n-  **Dynamic Programming**+string\n\n\n## Description\n![IMAGE](quiver-image-url/190ABCDE7D02242591CE46C2B24444F7.jpg)"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 1. Thought Line\n### (1) To each element, set it as the middle elements and check from both left and right direction. \n\n## 2.  **Dynamic Programming**+string"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    string longestPalindrome(string s) {\n      int n = s.size();\n      int len = 0; //len is the max length of Palindrome string.\n      int start = 0; \n      for(int i = 0; i < n; i++){\n        \n        // start to expend the interval\n        int left = i, right = i;\n        // consider duplicate characters.\n        while(right < n && s[right+1] == s[right]) \n          right++;\n        i = right;\n        \n        // keep expanding\n        while(left > 0 && right < n-1 && s[left-1] == s[right+1]){\n          left--;\n          right++;\n        }\n        \n        //update results\n        if(len < right-left+1){\n          len = right - left + 1;\n          start = left;\n        }\n      }\n      return s.substr(start, len);\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

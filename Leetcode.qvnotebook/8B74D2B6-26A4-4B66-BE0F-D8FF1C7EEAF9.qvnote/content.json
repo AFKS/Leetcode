@@ -1,0 +1,18 @@
+{
+  "title": "058. Length of Last Word",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 056 Merge Intervals\n- String\n\n## Description\n![IMAGE](quiver-image-url/8666C2E06FBF2CC608392F686A770AF7.jpg)\n\n## 1. Thought line\n\n## 2. String"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int lengthOfLastWord(string s) {\n        int result = 0;\n        bool flag = false; //for detect the end edge of last word\n        int n = s.size()-1;\n        while(n>=0){\n            if (flag && s[n] == ' ') break;\n            else if (s[n]!= ' '){\n                ++result;\n                flag = true;\n            }\n            --n;\n        }\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

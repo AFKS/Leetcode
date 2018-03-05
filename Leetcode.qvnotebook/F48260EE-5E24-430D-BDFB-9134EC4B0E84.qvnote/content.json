@@ -1,0 +1,14 @@
+{
+  "title": "199. Binary Tree Right Side View",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 199 Binary Tree Right Side View\n\n## Description\n\n>Given a binary tree, imagine yourself standing on the *right* side of it, return the values of the nodes you can see ordered from top to bottom.\n>\n>For example:\n>Given the following binary tree,\n>\n>```\n>   1            <---\n> /   \\\n>2     3         <---\n> \\     \\\n>  5     4       <---\n>```\n>\n>You should return `[1, 3, 4]`.\n\n## Solution\n\n-  **Tree**\n-  **Depth-first Search**\n-  Breadth-first Search\n\n\n### Depth-first Search\n"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\n\nvoid rightSideView_fct(TreeNode* node, vector<int>& res, int dep){\n    if (node==nullptr) return;\n    int cur_dep = dep+1;\n    if(res.empty()||cur_dep>=res.size()) res.push_back(node->val);\n    else res[cur_dep] = node->val;\n    \n    rightSideView_fct(node->left,res,cur_dep);\n    rightSideView_fct(node->right,res,cur_dep);\n}\n\nclass Solution {\npublic:\n    vector<int> rightSideView(TreeNode* root) {\n        vector<int> res;\n        rightSideView_fct(root,res,-1);\n        return res;\n    }\n};"
+    }
+  ]
+}

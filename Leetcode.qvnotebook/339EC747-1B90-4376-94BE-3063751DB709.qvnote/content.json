@@ -1,0 +1,18 @@
+{
+  "title": "253. Meeting Rooms II",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 253 Meeting Rooms II\n\n## Description\n> Given an array of meeting time intervals consisting of start and end times [[\n> s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms \n> required.\n>\n> For example,\n> Given [[0, 30],[5, 10],[15, 20]],\n> return 2.\n\n## Solution\n- **Heap**\n- **Greedy**\n- **Sort**\n- ...\n\n\n### Sort"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for an interval.\n * struct Interval {\n *     int start;\n *     int end;\n *     Interval() : start(0), end(0) {}\n *     Interval(int s, int e) : start(s), end(e) {}\n * };\n */\nclass Solution {\nprivate:\n    static bool compare(Interval& a, Interval& b){\n        return a.start<b.start;\n    }\n    \n    Interval overLap(Interval& a, Interval& b){\n        Interval res;\n        res.start = (a.end<=b.start)?INT_MIN:b.start;\n        res.end = (a.end<=b.start)?INT_MIN:a.end;\n        return res;\n    }\n    \n    void overLapRoom_fct(vector<Interval> meetings, int& roomNo){\n        if (meetings.empty()) return;\n        \n        roomNo = roomNo+1;\n        vector<Interval> newOverLap;\n        for (int i=0;meetings.size()>=2&&i<=meetings.size()-2;++i){\n            Interval temp = overLap(meetings[i],meetings[i+1]);\n            if (temp.start!=INT_MIN && temp.end!=INT_MIN){\n                newOverLap.push_back(temp);\n            }\n        }\n        overLapRoom_fct(newOverLap,roomNo);\n    }\n    \npublic:\n    int minMeetingRooms(vector<Interval>& intervals) {\n        int roomNo = 0;\n        vector<Interval> overlap = intervals;\n        sort(overlap.begin(),overlap.end(),compare);\n        overLapRoom_fct(overlap,roomNo);\n        return roomNo;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

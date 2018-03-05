@@ -1,0 +1,18 @@
+{
+  "title": "094. Binary Tree Inorder Traversal",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 094 Binary Tree Inorder Traversal\n- **Hash Table** + tree\n- **Stack** + tree\n\n## Description\n![IMAGE](quiver-image-url/232614BA278C3526D4A6C4A235AF3AAB.jpg)\n\n## 1. Thought line\n\n### (1) Stack\n![IMAGE](quiver-image-url/2BB2000C260B1DF4D2C53334BDC3E805.jpg)\n\n\n## 2. **Stack**+tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    vector<int> inorderTraversal(TreeNode* root) {\n        stack<TreeNode*> rootJumped;\n        vector<int> result;\n        TreeNode* cur = root;\n        while(cur || !rootJumped.empty()){\n            if (cur){\n                rootJumped.push(cur);\n                cur = cur->left;\n            }\n            else{\n                cur = rootJumped.top();\n                rootJumped.pop();\n                result.push_back(cur->val);\n                cur = cur->right;\n                \n            }\n        }\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

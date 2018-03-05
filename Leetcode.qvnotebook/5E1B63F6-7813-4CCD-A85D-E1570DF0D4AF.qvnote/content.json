@@ -1,0 +1,18 @@
+{
+  "title": "234. Palindrome Linked List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 234 Palindrome Linked List\n\n## Description\n> Given a singly linked list, determine if it is a palindrome.\n>\n> Follow up:\n> Could you do it in O(n) time and O(1) space?\n\n## Solution\n- **Linked List**\n- ...\n\n\n### Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    \n    ListNode* reverseList(ListNode* node){\n        ListNode* res = nullptr;\n        while(node!=nullptr){\n            ListNode* nextNode = node->next;\n            node->next = res;\n            res = node;\n            node = nextNode;\n        }\n        return res;\n    }\n    \n    \n    bool isPalindrome(ListNode* head) {\n        /*\n            @-find the middle node\n            @-reverse the first part list\n            @-compare with the second part list\n        */\n        if (head==nullptr||head->next==nullptr) return true;\n        \n        //@-find the middle node\n        ListNode* ptr1 = head;\n        ListNode* ptr2 = head->next;\n        signed int oddOrEven = 0;   //0-even; 1-odd\n        while(ptr2->next!=nullptr){\n            ptr1 = ptr1->next;\n            ptr2 = ptr2->next;\n            if(ptr2->next==nullptr) {\n                oddOrEven = 1;\n                break;\n            }\n            ptr2 = ptr2->next;\n        }\n        if(oddOrEven==1){\n            ptr2 = new ListNode(ptr1->val);\n            ptr2->next = ptr1->next;\n        }else\n            ptr2 = ptr1->next;;\n        ptr1->next = nullptr;\n        \n        //@-reverse the first part list\n        ptr2 = reverseList(ptr2);\n       \n        //@-compare with the second part list\n        while(head!=nullptr&&ptr2!=nullptr){\n            if(head->val!=ptr2->val) return false;\n            head = head->next;\n            ptr2 = ptr2->next;\n        }\n        return true;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

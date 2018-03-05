@@ -1,0 +1,32 @@
+{
+  "title": "109. Convert Sorted List to Binary Search Tree",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 109 Convert Sorted List to Binary Search Tree\n- **Depth-first Search** + Linked list\n\n## Description\n![IMAGE](quiver-image-url/1BD72E8A2261FA68191956619E3F322F.jpg)\n\n## 1. Thought line\n- Height-balanced BST\n- Find the middle node in Linked List\n"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "//find the middle node of linked list\nListNode* dummyHeadLinkList = new ListNode(0);\ndummyHeadLinkList->next = nodeList;\nListNode* ptr0 = dummyHeadLinkList;\nListNode* ptr1 = dummyHeadLinkList->next;  //mid spot\nListNode* ptr2 = dummyHeadLinkList->next->next;\n\nwhile(ptr2 != nullptr && ptr2->next !=nullptr){\n   ptr1 = ptr1->next;\n   ptr2 = ptr2->next->next;\n   ptr0 = ptr0->next;\n}  "
+    },
+    {
+      "type": "markdown",
+      "data": "\n- Get left half list and right half list."
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "// first half\nptr0->next = nullptr;\nListNode* firstHalf = dummyHeadLinkList->next;\n\n// second half\nListNode* secondHalf = ptr1->next;\nptr1->next = nullptr;"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 2. **Depth-first Search** + Linked list"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\n/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nvoid linkedListRoodFind(ListNode* nodeList, TreeNode* nodeTree, string str = \"toRightChild\"){\n        if (nodeList == nullptr) return;\n\n        //find the middle node of linked list\n        ListNode* dummyHeadLinkList = new ListNode(0);\n        dummyHeadLinkList->next = nodeList;\n        ListNode* ptr0 = dummyHeadLinkList;\n        ListNode* ptr1 = dummyHeadLinkList->next;  //mid spot\n        ListNode* ptr2 = dummyHeadLinkList->next->next;\n\n        while(ptr2 != nullptr && ptr2->next !=nullptr){\n            ptr1 = ptr1->next;\n            ptr2 = ptr2->next->next;\n            ptr0 = ptr0->next;\n        }        \n        \n        // first half\n        ptr0->next = nullptr;\n        ListNode* firstHalf = dummyHeadLinkList->next;\n\n        // second half\n        ListNode* secondHalf = ptr1->next;\n        ptr1->next = nullptr;\n\n        if (str == \"toRightChild\"){\n            nodeTree->right = new TreeNode(ptr1->val);\n            linkedListRoodFind(firstHalf, nodeTree->right, \"toLeftChild\");\n            linkedListRoodFind(secondHalf, nodeTree->right, \"toRightChild\");\n        }\n        else if (str == \"toLeftChild\"){\n            nodeTree->left = new TreeNode(ptr1->val);\n            linkedListRoodFind(firstHalf, nodeTree->left, \"toLeftChild\");\n            linkedListRoodFind(secondHalf, nodeTree->left, \"toRightChild\");\n        }\n\n    }\n    \nclass Solution {\npublic:\n    TreeNode* sortedListToBST(ListNode* head) {\n        if (head==nullptr) return nullptr;\n        TreeNode* dummyHead = new TreeNode(INT_MIN);\n        linkedListRoodFind(head,dummyHead);\n        return dummyHead->right;\n    }\n};"
+    }
+  ]
+}

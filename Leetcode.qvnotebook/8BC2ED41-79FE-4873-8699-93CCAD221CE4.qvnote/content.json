@@ -1,0 +1,18 @@
+{
+  "title": "240 Search a 2D Matrix II",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 240 Search a 2D Matrix II\n\n## Description\n> Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:\n>\n> Integers in each row are sorted in ascending from left to right.\n> Integers in each column are sorted in ascending from top to bottom.\n> For example,\n>\n> Consider the following matrix:\n> <pre>\n> [\n>   [1,   4,  7, 11, 15],\n>   [2,   5,  8, 12, 19],\n>   [3,   6,  9, 16, 22],\n>   [10, 13, 14, 17, 24],\n>   [18, 21, 23, 26, 30]\n> ]\n> </pre>\n> Given target = 5, return true.\n> Given target = 20, return false.\n\n## Solution\n- **Divide and Conquer**\n- Binary Search\n\n\n### Divide and Conquer\n1. C++"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool searchMatrixDivideAndConquer(vector<vector<int>>& matrix, int row_st, int row_ed, int col_st, int col_ed, int target){\n        //corner cases\n        if (row_st>row_ed||col_st>col_ed||target<matrix[row_st][col_st]||target>matrix[row_ed][col_ed]) return false;\n\n        //common cases\n            //-> calculate case\n        if (row_st == row_ed && col_st==col_ed)\n            if(target == matrix[row_st][col_st]) return true;\n            else return false;\n        else{\n            //-> split cases\n            int row_mid = (row_st+row_ed)/2;\n            int col_mid = (col_st+col_ed)/2;\n            bool lfSplitUp = searchMatrixDivideAndConquer(matrix, row_st, row_mid, col_st, col_mid, target);\n            bool lfSplitDown = searchMatrixDivideAndConquer(matrix, row_mid+1, row_ed, col_st, col_mid, target);\n            bool rtSplitUp = searchMatrixDivideAndConquer(matrix, row_st, row_mid, col_mid+1, col_ed, target);\n            bool rtSplitDown = searchMatrixDivideAndConquer(matrix, row_mid+1, row_ed, col_mid+1, col_ed, target);\n            return lfSplitUp||lfSplitDown||rtSplitUp||rtSplitDown;\n        }\n    }\n         \n    bool searchMatrix(vector<vector<int>>& matrix, int target) {\n        int rowSize = matrix.empty()? -1: matrix.size()-1;\n        int colSize = matrix.empty()? -1: matrix[0].size()-1;\n        return searchMatrixDivideAndConquer(matrix, 0, rowSize, 0, colSize, target);\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "\n### Binary Search\n"
+    }
+  ]
+}

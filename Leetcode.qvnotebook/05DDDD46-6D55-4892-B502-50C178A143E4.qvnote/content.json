@@ -1,0 +1,18 @@
+{
+  "title": "088. Merge Sorted Array",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 088 Merge Sorted Array\n- **Two Pointers** + Array\n\n## Description\n![IMAGE](quiver-image-url/1082E61E95A7CCA194056CDD33F0456A.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Two Pointers** + Array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    void merge(int A[], int m, int B[], int n) {\n        \n        int a=m-1;\n        int b=n-1;\n        int i=m+n-1;    // calculate the index of the last element of the merged array\n        \n        // go from the back by A and B and compare and put to the A element which is larger\n        while(a>=0 && b>=0){\n            if(A[a]>B[b])   A[i--]=A[a--];\n            else            A[i--]=B[b--];\n        }\n        \n        // if B is longer than A just copy the rest of B to A location, otherwise no need to do anything\n        while(b>=0)         A[i--]=B[b--];\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

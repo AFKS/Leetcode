@@ -1,0 +1,36 @@
+{
+  "title": "130. Surrounded Regions",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 130 Surrounded Regions\n- **Depth-first Search**\n- **Breadth-first Search**\n- **Union Find**\n\n\n## Description\n![IMAGE](quiver-image-url/9FD66CC138B91B23B989F061BBBD473D.jpg)\n\n## 1. Thought line\n"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 2. **Depth-first Search**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    },
+    {
+      "type": "markdown",
+      "data": "## 3. **Breadth-first Search**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    },
+    {
+      "type": "markdown",
+      "data": "## 4. **Union Find**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    }
+  ]
+}

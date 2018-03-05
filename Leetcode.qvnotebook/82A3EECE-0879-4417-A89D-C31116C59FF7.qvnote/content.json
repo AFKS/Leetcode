@@ -1,0 +1,18 @@
+{
+  "title": "073. Set Matrix Zeroes",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 073 Set Matrix Zeroes\n- array\n\n## Description\n![IMAGE](quiver-image-url/68B0263ADD69CAB980F8BA6B14C14CF4.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Hash Table**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    void setZeroes(vector<vector<int>>& matrix) {\n        set<int> zeroRow, zeroCol;\n        if (matrix.empty()) return;\n        for (int i = 0; i<=matrix.size()-1; ++i)\n            for (int j = 0; j<=matrix[i].size()-1; ++j)\n                if (matrix[i][j]==0){\n                    zeroRow.insert(i), zeroCol.insert(j);\n                }    \n        for (int i=0; i<=matrix.size()-1; ++i)\n            for (int j = 0; j<=matrix[i].size()-1; ++j)\n                if (zeroRow.find(i)!=zeroRow.end() || zeroCol.find(j)!=zeroCol.end())\n                    matrix[i][j]=0;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

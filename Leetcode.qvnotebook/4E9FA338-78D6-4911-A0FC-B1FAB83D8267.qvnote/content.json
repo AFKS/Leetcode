@@ -1,0 +1,14 @@
+{
+  "title": "006. ZigZag Conversion",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 006 ZigZag Conversion\n\n-  **Math**+string\n\n\n## Description\n![IMAGE](Pic/006.png)\n\n## Thought Line\n### (1) To each element, set it as the middle elements and check from both left and right direction. \n\n\n\n## 2.  **Dynamic Programming**+string"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    }
+  ]
+}

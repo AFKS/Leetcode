@@ -1,0 +1,23 @@
+{
+  "title": "116. Populating Next Right Pointers in Each Node",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 116 Populating Next Right Pointers in Each Node\n- **Depth-first Search** + Tree \n\n\n## Description\n![IMAGE](quiver-image-url/CAE8CD715A6EDFB6BD0ECED714510636.jpg)\n\n## 1. Thought line\n"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 2. **Depth-first Search** + Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for binary tree with next pointer.\n * struct TreeLinkNode {\n *  int val;\n *  TreeLinkNode *left, *right, *next;\n *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}\n * };\n */\nclass Solution {\nprivate:\n    void connect_fct(TreeLinkNode *node, TreeLinkNode *nodeNext) {\n        if(node == nullptr) return;\n        node->next = nodeNext;\n        connect_fct(node->left, node->right);\n        connect_fct(node->right, (nodeNext==nullptr)?nullptr:nodeNext->left);\n        \n    }\npublic:\n    void connect(TreeLinkNode *root) {\n        connect_fct(root, nullptr);\n    }\n};"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    }
+  ]
+}

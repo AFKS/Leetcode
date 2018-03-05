@@ -1,0 +1,18 @@
+{
+  "title": "204. Count Primes",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 204. Count Primes\n\n## Description\n> Description:\n> Count the number of prime numbers less than a non-negative number, n.\n>ref: http://blog.leanote.com/post/westcode/%5B%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0%5D-LeetCode-204-Count-Primes\n\n## Solution\n- **Math**\n- **Hash Table**\n- ...\n\n### Hash Table"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int countPrimes(int n) {\n        vector<bool> isPrime(n,true);\n        isPrime[0] = false, isPrime[1] = false;\n        for (int i=0; i*i<=n;++i){\n            if (isPrime[i]){\n                for (int j = i; j*i<=n; j++)\n                    isPrime[j*i]=false;\n            }\n        }\n        return count(isPrime.begin(), isPrime.end(), true);\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

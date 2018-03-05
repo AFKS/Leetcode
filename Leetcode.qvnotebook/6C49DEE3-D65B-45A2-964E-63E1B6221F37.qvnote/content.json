@@ -1,0 +1,18 @@
+{
+  "title": "080. Remove Duplicates from Sorted Array II",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 080 Remove Duplicates from Sorted Array II\n- **Two Pointers**+Array\n\n## Description\n![IMAGE](quiver-image-url/F8331E75137FCB2CD87E65C008A044A9.jpg)\n\n## 1. Thought line\n![IMAGE](quiver-image-url/F586187942DB35185C09E1CAA5FFB3E6.jpg)\n\n\n## 2. **Two Pointers**+Array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int removeDuplicates(vector<int>& nums) {\n        int result = 0;\n        for (auto it = nums.begin(), eraseSt = it; it !=nums.end();  eraseSt = it){\n            int duplicateAct = 1;\n            while (it +1 !=nums.end() && *(it+1)==*it){\n                ++duplicateAct, ++it;\n                if (duplicateAct==3) eraseSt = it;\n            }\n            if (duplicateAct>2) it = nums.erase(eraseSt, it+1);\n            else ++it;\n            result += duplicateAct<2?duplicateAct:2;\n        }\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

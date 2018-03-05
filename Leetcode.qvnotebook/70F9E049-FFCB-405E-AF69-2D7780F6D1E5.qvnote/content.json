@@ -1,0 +1,18 @@
+{
+  "title": "039. Combination Sum",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 039 Combination Sum\n- **BackTracking**+array\n\n## Description\n![IMAGE](quiver-image-url/4B35B99A2503D0E2F66C60EFF87AA030.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **BackTracking**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void backTrackingSum(vector<int>& nums, int target, int sum, int st, vector<vector<int>>& result, vector<int>& temp){\n        if (sum == target) {\n            result.push_back(temp);\n            return;\n        }\n        if (st>=nums.size() || sum > target || sum+nums[st]>target) return;\n        for (int i = st; i<=nums.size()-1; ++i){\n            temp.push_back(nums[i]);\n            backTrackingSum(nums, target, sum+nums[i], i, result, temp);\n            temp.pop_back();\n            while(i+1<=nums.size()-1&&nums[i+1]==nums[i]) ++i;\n        }\n    }\n\npublic:\n    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {\n        vector<vector<int>> result;\n        vector<int> temp;\n        sort(candidates.begin(),candidates.end());\n        backTrackingSum(candidates, target, 0, 0, result, temp);\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

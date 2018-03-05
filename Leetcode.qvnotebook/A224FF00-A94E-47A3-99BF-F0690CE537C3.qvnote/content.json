@@ -1,0 +1,18 @@
+{
+  "title": "046. Permutations",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 046 Permutations\n- **BackTracking**+array\n\n## Description\n![IMAGE](quiver-image-url/E0814F0AB7514F5E6A749A963900EFBC.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **BackTracking**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void backTracking_fct(vector<vector<int>>& result, vector<int>& nums, vector<bool>& flag, \n                     vector<int>& temp){\n        if (temp.size()==nums.size()){\n            result.push_back(temp);\n            return;\n        }\n        \n        for (int i = 0; i<=flag.size()-1; ++i){\n            if (!flag[i]){\n                temp.push_back(nums[i]);\n                flag[i] = true;\n                backTracking_fct(result, nums, flag, temp);\n                flag[i] = false;\n                temp.pop_back();\n            }\n        }\n    }\n    \n    \npublic:\n    vector<vector<int>> permute(vector<int>& nums) {\n        vector<vector<int>> result;\n        vector<bool> flag(nums.size(),false);\n        vector<int> temp;\n        backTracking_fct(result, nums, flag, temp);\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

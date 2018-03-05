@@ -1,0 +1,18 @@
+{
+  "title": "083. Remove Duplicates from Sorted List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 083 Remove Duplicates from Sorted List\n- **Linked List**\n\n## Description\n![IMAGE](quiver-image-url/DB0089365CAA3DA0EC03C64202C30A50.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Linked List**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* deleteDuplicates(ListNode* head) {\n        ListNode* dummyHead = new ListNode(0);\n        dummyHead->next = head;\n        ListNode* validatedPtr = dummyHead;\n\n        while(head!=nullptr){\n            while(head->next!=nullptr && head->next->val == head->val)\n                head = head->next;\n            validatedPtr->next = head;\n            validatedPtr = validatedPtr->next;\n            head = head->next;\n        }\n        validatedPtr->next = nullptr;\n        return dummyHead->next;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

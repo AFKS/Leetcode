@@ -1,0 +1,18 @@
+{
+  "title": "062. Unique Paths",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 062 Unique Paths\n- **Dynamic Programming**+Array\n\n## Description\n![IMAGE](quiver-image-url/7E8D8C5B72C9FDB86890F031729E59A0.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Dynamic Programming**+Array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int uniquePaths(int m, int n) {\n        int Possibility [m][n];\n        \n        // initiate Possibility array\n        for (int i=0; i<=m-1; ++i)\n            for (int j=0; j<=n-1; ++j)\n                if (i==0 || j==0)\n                    Possibility[i][j]=1;\n        \n        // dp\n        for (int i=1; i<=m-1; ++i){\n            for (int j=1; j<=n-1; ++j)\n                Possibility[i][j] = Possibility[i-1][j]+Possibility[i][j-1];\n            \n        }\n        return Possibility[m-1][n-1];\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

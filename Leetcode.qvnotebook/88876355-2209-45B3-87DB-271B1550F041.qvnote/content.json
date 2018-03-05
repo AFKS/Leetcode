@@ -1,0 +1,18 @@
+{
+  "title": "205. Isomorphic Strings",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 205 Isomorphic Strings\n## Description\n>Given two strings s and t, determine if they are isomorphic.\n>Two strings are isomorphic if the characters in s can be replaced to get t.\n>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.\n>For example,\n>Given \"egg\", \"add\", return true.\n>Given \"foo\", \"bar\", return false.\n>Given \"paper\", \"title\", return true.\n\n\n## Solution\n- **Hash Table**\n- ...\n\n### Hash Table"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool isIsomorphic(string s, string t) {\n        if (s.empty()||t.empty()||s.size()!=t.size()) return true;\n        unordered_map<char,char> h1,h2;\n        \n        for(int i=0;i<=s.size()-1;++i){\n            if (h1.find(s[i])!=h1.end()){\n                if (h1[s[i]]!=t[i])\n                    return false;\n            }else\n                h1[s[i]]=t[i];\n            if (h2.find(t[i])!=h2.end()){\n                if (h2[t[i]]!=s[i])\n                    return false;\n            }else\n                h2[t[i]]=s[i];\n        }\n        return true;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

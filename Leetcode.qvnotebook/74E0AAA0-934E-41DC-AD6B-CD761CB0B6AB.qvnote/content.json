@@ -1,0 +1,27 @@
+{
+  "title": "002. Add Two Numbers",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 002 Add Two Numbers\n\n- **Linked List**+**Math**\n\n\n## Description\n![IMAGE](quiver-image-url/7F12A86957BACF436B2C2F981C0CD6AF.jpg)\n\n\n\n## 1. Thought Line\n\n### (1) Discuss how to reverse a linked list\n"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "ListNode* reverseListOrder(ListNode* lst){\n\tListNode* dummyHead = new ListNode(0);\n\tListNode* dummyTail = nullptr;\n\tListNode* insertTo = dummyTail;\n\twhile(lst!=nullptr){\n\tListNode* insertNode = new ListNode(lst->val);\n\tinsertNode->next = insertTo;\n\tdummyHead->next = insertNode;\n\tinsertTo = insertNode;\n\tlst = lst->next;\n\t}\n\treturn dummyHead->next;\n}"
+    },
+    {
+      "type": "markdown",
+      "data": "\n### (2) Math logic\n- Need to analyze the carry direction.\n- in \"2 -> 4 -> 3\"+\"5 -> 6 -> 4\", it is from left to right\n- in \"342\"+\"465\", it is from right to left\n\n\n## 2. Linked List + Math"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\n\nprivate:\n    ListNode* addList(ListNode* l1, ListNode* l2){\n        ListNode* dummyHead = new ListNode(0);\n        ListNode* head = dummyHead;\n        signed int carry = 0;\n        while(l1!=nullptr || l2!=nullptr || carry !=0){\n            int l1Val = (l1!=nullptr) ? l1->val : 0;\n            int l2Val = (l2!=nullptr) ? l2->val : 0;\n            int sumOfl1l2carry = l1Val + l2Val + carry;\n            \n            head->next = new ListNode (sumOfl1l2carry%10);\n            carry = sumOfl1l2carry/10;\n            \n            l1 = (l1!=nullptr)? l1->next : nullptr;\n            l2 = (l2!=nullptr)? l2->next : nullptr;\n            head = head->next;\n        }\n        return dummyHead->next;\n    }\n\npublic:\n    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {\n        if (l1==nullptr) return l2;\n        if (l2==nullptr) return l1;\n        ListNode* l1Addl2 = addList(l1,l2);\n        return l1Addl2;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "\n"
+    }
+  ]
+}

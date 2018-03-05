@@ -1,0 +1,18 @@
+{
+  "title": "047. Permutations II",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 047 Permutations II\n- **BackTracking**+array\n\n## Description\n![IMAGE](quiver-image-url/EC8A698EB53FB9CDD3D9391EBA4D0D43.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **BackTracking**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void backTracking_fct(vector<vector<int>>& result, vector<int>& nums, vector<bool>& flag, \n                     vector<int>& temp){\n        if (temp.size()==nums.size()){\n            result.push_back(temp);\n            return;\n        }\n        \n        for (int i = 0; i<=flag.size()-1; ++i){\n            if (!flag[i]){\n                temp.push_back(nums[i]);\n                flag[i] = true;\n                backTracking_fct(result, nums, flag, temp);\n                flag[i] = false;\n                temp.pop_back();\n                while(i+1<=flag.size()-1 && nums[i]==nums[i+1])\n                    ++i;\n            }\n        }\n    }\n    \n    \npublic:\n    vector<vector<int>> permuteUnique(vector<int>& nums) {\n        vector<vector<int>> result;\n        vector<bool> flag(nums.size(),false);\n        vector<int> temp;\n        sort(nums.begin(), nums.end());\n        backTracking_fct(result, nums, flag, temp);\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

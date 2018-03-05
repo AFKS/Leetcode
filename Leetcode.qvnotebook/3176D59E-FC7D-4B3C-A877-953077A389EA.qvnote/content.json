@@ -1,0 +1,18 @@
+{
+  "title": "110. Balanced Binary Tree",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 110 Balanced Binary Tree\n- **Depth-first Search** + Tree\n\n## Description\n![IMAGE](quiver-image-url/B6B6EF07043737196872A584701F91D9.jpg)\n\n## 1. Thought line\n- Height-balanced BST"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 2. **Depth-first Search** + Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\nprivate:\n    int findHeight(TreeNode* node){\n        if (!node) return 0;\n        return 1+max(findHeight(node->left), findHeight(node->right));\n    }\npublic:\n    bool isBalanced(TreeNode* root) {\n        if (root==nullptr) return true;\n        int leftHight = findHeight(root->left);\n        int rightHight = findHeight(root->right);\n        bool current = (abs(leftHight - rightHight)<=1)?true:false;\n        return current && isBalanced(root->left) && isBalanced(root->right);\n    }\n};"
+    }
+  ]
+}

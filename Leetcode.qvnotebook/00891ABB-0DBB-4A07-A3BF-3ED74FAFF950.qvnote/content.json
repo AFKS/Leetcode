@@ -1,0 +1,23 @@
+{
+  "title": "242. Valid Anagram",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 242 Valid Anagram\n## Description\n>Given two strings s and t, write a function to determine if t is an anagram of s.\n>For example\n>s = \"anagram\", t = \"nagaram\", return true.\n>s = \"rat\", t = \"car\", return false.\n\n\n## Solution\n- **Hash Table**\n- **Sort**\n\n### Hash Table"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool isAnagram(string s, string t) {\n        if (s.length() != t.length()) return false;\n        int n = s.length();\n        unordered_map<char, int> counts;\n        for (int i = 0; i < n; i++) {\n            counts[s[i]]++;\n            counts[t[i]]--;\n        }\n        for (auto count : counts)\n            if (count.second) return false;\n        return true;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "### Sort"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool isAnagram(string s, string t) { \n        sort(s.begin(), s.end());\n        sort(t.begin(), t.end());\n        return s == t; \n    }\n};"
+    }
+  ]
+}

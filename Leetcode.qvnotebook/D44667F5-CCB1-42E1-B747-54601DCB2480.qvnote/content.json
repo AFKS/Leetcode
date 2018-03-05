@@ -1,0 +1,23 @@
+{
+  "title": "004. Median of Two Sorted Arrays",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 004 Median of Two Sorted Arrays\n\n-  **Divide and conquer**\n-  **Binary Search**\n\n\n## Description\n![IMAGE](quiver-image-url/1B05D2606573181213B5103FBFDFF39C.jpg)\n\n\n## 1. Thought Line\n###(1) The basic idea is to always compare the median of A and B and drop half of A or B elements based on the comparison results.\n\n###(2) About median\n- When the length is odd, median is num[length/2+1]\n- When the length is even, median is (num[length/2+1]+num[length/2])/2\n\n\n\n\n## 2.  Divide-and-Conquer"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    },
+    {
+      "type": "markdown",
+      "data": "## 3. Binary Search"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    }
+  ]
+}

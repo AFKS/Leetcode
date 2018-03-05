@@ -1,0 +1,18 @@
+{
+  "title": "048. Rotate Image",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 048 Rotate Image\n- array\n- **Onion-rotate**\n\n## Description\n![IMAGE](quiver-image-url/6380F2FC0F9B7E031BFF7A196EE523EF.jpg)\n\n## 1. Thought line\n![IMAGE](quiver-image-url/E66AC5368F48B2F4B91DB1FFFEF8D08A.jpg)\n\n\n## 2. **Onion-rotate**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    void rotate(vector<vector<int> > &matrix) {\n        int start = 0, end = matrix.size()-1;\n        while(start<end) {\n            for(int i=start; i<end; i++) {  // rotate a layer\n                int offset = i - start;\n                int temp = matrix[start][i];\n                matrix[start][i] = matrix[end-offset][start];\n                matrix[end-offset][start] = matrix[end][end-offset];\n                matrix[end][end-offset] = matrix[start+offset][end];\n                matrix[start+offset][end] = temp;\n            }\n            start++;\n            end--;\n        }\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

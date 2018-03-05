@@ -1,0 +1,23 @@
+{
+  "title": "114. Flatten Binary Tree to Linked List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 114 Flatten Binary Tree to Linked List\n- **Depth-first Search** + Tree \n\n\n## Description\n![IMAGE](quiver-image-url/06FAF9E882C0C74514F0BAD6A2B55E45.jpg)\n\n## 1. Thought line\n- ALWAYS move from current node to its right child.\n- To each node:\n(1) move its right subTree to the most right node of its left subTree.\n(2) Switch right subTree and left subTree.\n(3) move to next node (node->right)"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 2. **Depth-first Search** + Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    void flatten(TreeNode* root) {\n        while(root!=nullptr){\n            TreeNode* leftChild = root->left;\n            if (leftChild == nullptr) root = root->right;\n            else{\n               //move its right subTree to the most right node of its left subTree.\n                while (leftChild!=nullptr && leftChild->right!=nullptr) leftChild = leftChild->right;\n                leftChild->right = root->right;\n                \n                //Switch right subTree and left subTree.\n                root->right = root->left;\n                root->left = nullptr;\n                root = root->right; \n            }\n        }\n    }\n};"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": ""
+    }
+  ]
+}

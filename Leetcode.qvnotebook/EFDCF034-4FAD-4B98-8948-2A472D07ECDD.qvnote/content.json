@@ -1,0 +1,18 @@
+{
+  "title": "092. Reverse Linked List II",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 092 Reverse Linked List II\n- Linked List\n\n## Description\n![IMAGE](quiver-image-url/E879646AD2B1731A9161317BFEC85AFB.jpg)\n\n## 1. Thought line\n\n\n## 2. Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* reverseBetween(ListNode* head, int m, int n) {\n        ListNode* dummyHead = new ListNode(0);\n        dummyHead->next = head;\n        unsigned int size = 0; \n        ListNode* ptr = dummyHead->next;\n        ListNode* ptr_st = dummyHead;\n        ListNode* ptr_ed = dummyHead->next;\n        \n        while(ptr!=nullptr){\n            ++size;\n            ListNode* ptr_next = ptr->next;\n            if(size<=m){\n                ptr_st = (size<m)?ptr_st->next:ptr_st;\n                ptr_ed = (size<m)?ptr_ed->next:ptr_ed;\n            } \n            else if (size>m && size<=n){\n                ListNode* ptr_st_next = ptr_st->next;\n                ptr_st->next = new ListNode(ptr->val);\n                ptr_st->next->next = ptr_st_next;\n                ptr_ed->next = ptr->next; \n            }else \n                break;\n            ptr = ptr_next;\n            \n        }\n        return dummyHead->next;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

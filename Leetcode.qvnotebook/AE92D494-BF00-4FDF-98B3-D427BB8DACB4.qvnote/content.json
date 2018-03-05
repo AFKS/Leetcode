@@ -1,0 +1,18 @@
+{
+  "title": "086. Partition List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 086 Partition List\n- **Two Pointers** + Linked List\n\n## Description\n![IMAGE](quiver-image-url/26980067DAA8D879A5419E6055B2A894.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Two Pointers** + Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* partition(ListNode* head, int x) {\n        ListNode* dummyHeadFirstHalf = new ListNode(0);\n        ListNode* dummyHeadSecondHalf = new ListNode(0);\n        ListNode* firstHalfElement = dummyHeadFirstHalf;\n        ListNode* lastHalfElement = dummyHeadSecondHalf;\n        \n        while(head!=nullptr){\n            ListNode* headNext = head->next;\n            if(head->val<x){\n                firstHalfElement->next = new ListNode(head->val);\n                firstHalfElement = firstHalfElement->next;\n            }\n            else{\n                lastHalfElement->next = new ListNode(head->val);\n                lastHalfElement = lastHalfElement->next;\n            }\n            head = headNext;\n        }\n        firstHalfElement->next = dummyHeadSecondHalf->next;\n        return dummyHeadFirstHalf->next;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "title": "148. Sort List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 148 Sort List\n\n## Description\n\n>Sort a linked list in O(n log n) time using constant \n>space complexity.\n## Solution\n\n-  **Linked List**\n-  **Sort**\n-  ...\n\n### Sort\n\n-  Merge Sort\n"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\n\n\n\n\n\nclass Solution {\npublic:\n    \n    //childList[0]=l1; childList[1]=l2\n    void splitList(ListNode* node, vector<ListNode*>& childList){\n        ListNode* dummyHead = new ListNode(0);\n        dummyHead->next = node;\n        ListNode* l1 = dummyHead;\n        ListNode* l2 = dummyHead;\n        while(l2!=nullptr&&l2->next!=nullptr){\n            l1 = l1->next;\n            l2 = (l2->next==nullptr)?nullptr:l2->next->next;\n        }\n        childList[1] = l1->next;\n        l1->next=nullptr;\n        childList[0] = dummyHead->next;\n    }\n    \n    ListNode* mergeSort(ListNode* l1, ListNode* l2){\n        ListNode* dummyHead = new ListNode(0);\n        ListNode* ptr = dummyHead;\n        while(l1!=nullptr||l2!=nullptr){\n            int val1 = (l1!=nullptr)?l1->val:INT_MAX;\n            int val2 = (l2!=nullptr)?l2->val:INT_MAX;\n            if(val1<val2){\n                ptr->next = new ListNode(val1);\n                l1 = (l1!=nullptr)?l1->next:nullptr;    \n            }else{\n                ptr->next = new ListNode(val2);\n                l2 = (l2!=nullptr)?l2->next:nullptr;    \n            }\n            ptr = ptr->next; \n        }\n        return dummyHead->next;\n    }\n    \n    \n    ListNode* sortList(ListNode* head) {\n        if (head==nullptr||head->next==nullptr) return head;\n        vector<ListNode*> childList(2);\n        splitList(head, childList);\n        ListNode* l1 = sortList(childList[0]);\n        ListNode* l2 = sortList(childList[1]);\n        return mergeSort(l1,l2);\n        \n    }\n};"
+    }
+  ]
+}

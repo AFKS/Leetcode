@@ -1,0 +1,23 @@
+{
+  "title": "009. Palindrome Number",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 009 Palindrome Number\n\n-  **to_string()**\n-  **Math**\n\n\n## Description\n![IMAGE](quiver-image-url/5C824D23EA19ECE958F26542CA4938AA.jpg)\n\n## 1. Thought Line\n### (1) If the integer is smaller than 0, return false;\n\n### (2) use to_string() for converting a integer to a string."
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "string str = to_string(int val)"
+    },
+    {
+      "type": "markdown",
+      "data": "### (3) Pure math way\n\n\n\n## 2.  **to_string()**"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool isPalindrome(int x) {\n        \n        // detect the sign of input integer\n        bool postive = (x>=0)?true:false;\n        if (!postive) return false;\n        \n        string str= to_string(x);\n        for (int i=0, j = str.size()-1; i<=j; ++i,--j){\n            if (str[i]!=str[j]) return false;\n        }\n        return true;\n    }\n};"
+    }
+  ]
+}

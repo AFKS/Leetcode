@@ -1,0 +1,18 @@
+{
+  "title": "138. Copy List with Random Pointer",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 138 Copy List with Random Pointer\n\n## Description\n> A linked list is given such that each node contains an additional\n> random pointer which could point to any node in the list or null.\n> Return a deep copy of the list.\n> 这题的关键是如何track一个节点是否已经被copy了。假如我们要copy如下list，用指针p1\n> 扫描每个节点，另一个指针p2建立copy。\n\n\n## Solution\n- **Hash Table**\n- **Linked List**\n- ...\n\n### Hash Table"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list with a random pointer.\n * struct RandomListNode {\n *     int label;\n *     RandomListNode *next, *random;\n *     RandomListNode(int x) : label(x), next(NULL), random(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    RandomListNode *copyRandomList(RandomListNode *head) {\n        if(!head) return NULL;\n        //使用一个hash table来记录原节点和复制节点的地址对应关系\n        unordered_map<RandomListNode*, RandomListNode*> ht;\n        RandomListNode *p1 = head;\n        RandomListNode *p2 = new RandomListNode(head->label);\n        ht[p1] = p2;\n        \n        while(p1) {\n            //这样每次要建立当前节点p1的next和random前, 先在hash table中查找\n            if(p1->next) {\n                // 如果找到，则直接连接\n                if(ht.count(p1->next))\n                    p2->next = ht[p1->next];\n                // 否则建立新节点连上，并把和原节点的对应关系存入hash table中。\n                else {\n                    p2->next = new RandomListNode(p1->next->label);\n                    ht[p1->next] = p2->next;\n                }\n            }\n            if(p1->random) {\n                if(ht.count(p1->random))\n                    p2->random = ht[p1->random];\n                else {\n                    p2->random = new RandomListNode(p1->random->label);\n                    ht[p1->random] = p2->random;\n                }\n            }\n            p1 = p1->next;\n            p2 = p2->next;\n        }\n        return ht[head];\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

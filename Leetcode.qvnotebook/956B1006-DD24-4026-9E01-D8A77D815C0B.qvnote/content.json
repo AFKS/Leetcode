@@ -1,0 +1,18 @@
+{
+  "title": "096. Unique Binary Search Trees",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 096. Unique Binary Search Trees\n- **Dynamic Programming** + tree\n\n## Description\n![IMAGE](quiver-image-url/699021E1F0829814320E25BAFC04BF49.jpg)\n\n## 1. Thought line\n![IMAGE](quiver-image-url/51587F648FD69EB44DE7B16559E938FC.jpg)\n\n\n\n## 2. **Dynamic Programming** + tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int numTrees(int n) {\n        vector<int> uniqueBST(n+1,1);\n        \n        for (int i=2; i<=n; ++i){\n            int uniqueBSTofCurrentNode = 0;\n            for (int node = 1; node<=i; ++node){\n                int leftNodeNum = node-1, rightNodeNum = i-node;\n                uniqueBSTofCurrentNode +=uniqueBST[leftNodeNum]*uniqueBST[rightNodeNum];\n            }\n            uniqueBST[i] = uniqueBSTofCurrentNode;\n        }\n        return uniqueBST[n];\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

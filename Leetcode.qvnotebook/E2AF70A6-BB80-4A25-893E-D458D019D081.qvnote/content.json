@@ -1,0 +1,18 @@
+{
+  "title": "093. Restore IP Addresses",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 093 Restore IP Addresses\n- **Backtracking**+string\n\n## Description\n![IMAGE](quiver-image-url/6CEE560F27EEF0C11D681AE9466E598C.jpg)\n\n## 1. Thought line\n1. IP Address Format\n2. \n\n## 2. **Backtracking**+string"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    vector<string> restoreIpAddresses(string s) {\n        vector<string> ipComb;\n        vector<string> ipNum;\n        findIPAddr(s, 0, ipNum, ipComb);\n        return ipComb;\n    }\n    \n    void findIPAddr(string &s, int index, vector<string> &ipNum, vector<string> &ipComb) {\n        if(ipNum.size()==4) {\n            if(index==s.size()) {\n                string ipAddr = ipNum[0];\n                for(int i=1; i<4; i++) \n                    ipAddr += (\".\"+ipNum[i]);\n                ipComb.push_back(ipAddr);\n            }\n            return;\n        }\n        \n        string curNum;\n        for(int i=index; i<s.size() && i<index+3; i++) {\n            curNum.push_back(s[i]);\n            if(isValidNum(curNum)) {\n                ipNum.push_back(curNum);\n                findIPAddr(s, i+1, ipNum, ipComb);\n                ipNum.pop_back();\n            }\n        }\n    }\n    \n    bool isValidNum(string s) {\n        if(s.empty() || s.size()>3) return false;\n        if(s[0]=='0' && s.size()!=1) return false;\n        if(s.size()==3 && stoi(s)>255) return false;\n        return true;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

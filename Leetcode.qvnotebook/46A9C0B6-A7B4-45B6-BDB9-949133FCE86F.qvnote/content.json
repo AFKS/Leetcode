@@ -1,0 +1,27 @@
+{
+  "title": "075. Sort Colors",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 075 Sort Colors\n\n## Description\n> Given an array with n objects colored red, white or blue, sort them so that \n> objects of the same color are adjacent, with the colors in the order red, \n> white and blue.\n> \n> Here, we will use the integers 0, 1, and 2 to represent the color red, \n> white, and blue respectively.\n> \n> Note:\n> You are not suppose to use the library's sort function for this problem.\n\n## Solution\n- **Array**\n- **Sort**\n- **Two Pointers**\n- ...\n\n\n### Sort\n\n- Count Sort"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    void sortColors(vector<int>& nums) {\n        vector<int> colourNo(3);\n        for (int i=0; !nums.empty()&& i<=nums.size()-1;++i)\n            ++colourNo[nums[i]];\n        \n        int spot = -1;\n        for (int i=0; !colourNo.empty()&&i<=colourNo.size()-1;++i){\n            int colour = i;\n            int colNo = colourNo[i];\n            for (int j=1;j<=colNo;++j){\n                ++spot;\n                nums[spot] = i;\n            }\n        }\n        return;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "\n\n### Two Pointers"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    void sortColors(vector<int>& nums) {\n        if(nums.empty()||nums.size()==1) return;\n        \n        int redIndex = 0, blueIndex = nums.size()-1;\n        for (int i=0;i<=blueIndex;){\n            if (nums[i]==0){\n                swap(nums[i],nums[redIndex]);\n                redIndex++;\n                ++i;\n            }\n            else if (nums[i]==2){\n                swap(nums[i],nums[blueIndex]);\n                blueIndex--;\n            }\n            else if (nums[i]==1)\n                i++;\n        }\n        return;\n    }\n};\n"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

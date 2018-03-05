@@ -1,0 +1,18 @@
+{
+  "title": "022. Generate Parentheses",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 021 Merge Two Sorted Lists\n\n- **Backtracking**+string\n- \n## Description\n![IMAGE](quiver-image-url/F147C04221DE7DE983FA8CEDCC26B63A.jpg)\n\n## 1. Thought line\n\n## 2. **Backtracking**+string"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\nprivate:\n    void generateParenthesis_fct(int lfCount, int rtCount, int n, string str, vector<string>& result){\n        if (lfCount<rtCount || lfCount>n ||rtCount>n || n<=0) return;\n        if (lfCount==n && rtCount==n) {\n            result.push_back(str);\n            return;\n        }\n        // insert \"(\"\n        if (lfCount<n)\n            generateParenthesis_fct(lfCount+1, rtCount, n, str+\"(\", result);\n        // insert \")\"\n        if(lfCount>rtCount)\n            generateParenthesis_fct(lfCount, rtCount+1, n, str+\")\", result);\n    }\npublic:\n    vector<string> generateParenthesis(int n) {\n        vector<string> result;\n        generateParenthesis_fct(0, 0, n, \"\", result);\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

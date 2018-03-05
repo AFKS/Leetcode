@@ -1,0 +1,23 @@
+{
+  "title": "202. Happy Number",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 202 Happy Number\n\n## Description\n> Write an algorithm to determine if a number is \"happy\".\n>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers."
+    },
+    {
+      "type": "code",
+      "language": "text",
+      "data": "Example: 19 is a happy number\n\n12 + 92 = 82\n82 + 22 = 68\n62 + 82 = 100\n12 + 02 + 02 = 1"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## Solution\n- **Math**\n- **Hash Table**\n- ...\n\n### Hash Table"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool isHappy(int n) {\n        if(n<=0) return false;\n        set<int> hash;\n        while(n>1){\n            if(hash.find(n)!=hash.end()) return false;\n            hash.insert(n);\n            int sum=0;\n            while(n>0){\n                sum+=pow(n%10,2);\n                n /=10;\n            }\n            n = sum;\n        }\n        return true;\n    }\n};"
+    }
+  ]
+}

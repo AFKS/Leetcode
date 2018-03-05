@@ -1,0 +1,14 @@
+{
+  "title": "106. Construct Binary Tree from Inorder and Postorder Traversal",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 106 Construct Binary Tree from Inorder and Postorder Traversal\n\n## Description\n\n>Given inorder and postorder traversal of a tree, construct the binary tree.\n>\n>**Note:**\n>You may assume that duplicates do not exist in the tree.\n## Solution\n\n-  **Tree**\n-  **Depth-first Search**\n-  **Array**\n\n### Depth-first Search\n"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\n\npublic:\n    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder){\n    return helper(inorder,0,inorder.size(),postorder,0,postorder.size());\n    }\n    \nprivate:\n    TreeNode* helper(vector<int>& inorder,int i,int j,vector<int>& postorder,int ii,int jj)\n    {\n        // 每次取postorder的最后一个值mid，将其作为树的根节点\n        // 然后从inroder中找到mid，将其分割成为两部分，左边作为mid的左子树，右边\n        // 作为mid的右子树\n        // tree:     8 4 10 3 6 9 11\n        // Inorder   [3 4 6] 8 [9 10 11]\n        // postorder [3 6 4]   [9 11 10] 8\n\n        if(i >= j || ii >= jj)\n            return NULL;\n        \n        int mid = postorder[jj - 1];\n        \n        auto f = find(inorder.begin() + i,inorder.begin() + j,mid);\n        \n        int dis = f - inorder.begin() - i;\n        \n        TreeNode* root = new TreeNode(mid);\n        root -> left = helper(inorder,i,i + dis,postorder,ii,ii + dis);\n        root -> right = helper(inorder,i + dis + 1,j,\n        \tpostorder,ii + dis,jj - 1);\n        \n        return root;\n        \n    }\n};"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "title": "011. Container With Most Water",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 011 Container With Most Water\n\n-  **Two Pointer**+Array\n\n\n## Description\n![IMAGE](quiver-image-url/D025EF75274AFC1F1BC2EE866E2B69B6.jpg)\n\n## 1. Thought Line\n\n\n\n## 2.  **Two Pointer**+Array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    int maxArea(vector<int>& height) {\n      int water = 0;\n      int i = 0, j = height.size() - 1;\n      while (i < j) {\n          int h = min(height[i], height[j]);\n          water = max(water, (j - i) * h);\n          while (height[i] <= h && i < j) i++;\n          while (height[j] <= h && i < j) j--;\n      }\n      return water;\n    }\n};"
+    }
+  ]
+}

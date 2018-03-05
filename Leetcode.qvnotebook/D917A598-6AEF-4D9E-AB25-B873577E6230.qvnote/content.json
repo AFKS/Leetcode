@@ -1,0 +1,18 @@
+{
+  "title": "203. Remove Linked List Elements",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 203 Remove Linked List Elements\n\n## Description\n> Remove all elements from a linked list of integers that have value val.\n>\n> Example\n> Given: 1 --> 2 --> 6 --> 3 --> 4 --> 5 --> 6, val = 6\n> Return: 1 --> 2 --> 3 --> 4 --> 5\n\n## Solution\n- **Linked List**\n- ...\n\n\n### Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    ListNode* removeElements(ListNode* head, int val) {\n        ListNode* dummyHead = new ListNode(0);\n        dummyHead->next = head;\n        ListNode* ptr = dummyHead;\n        while (ptr->next != nullptr){\n            ListNode* currentNode = ptr->next;\n            if (currentNode->val == val){\n                ptr->next = currentNode->next;\n                currentNode->next = nullptr;\n            }\n            else\n                ptr = ptr->next;\n        }\n        return dummyHead->next;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

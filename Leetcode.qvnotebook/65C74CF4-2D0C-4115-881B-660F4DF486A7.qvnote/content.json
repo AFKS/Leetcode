@@ -1,0 +1,18 @@
+{
+  "title": "001. Two Sum",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 001 Two Sum\n\n- **Array**\n- **Hash Table** + two pointers\n\n\n## Description\n![IMAGE](quiver-image-url/7131CF78F6DA1A852CB82AFDC550D8CB.jpg)\n\n\n## 1. Thought Line\n(1) map struture **mapHash** is for storing the occurrence numbers of each number.\n\n\n## 2. Hash Table + Two Pointers"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    vector<int> twoSum(vector<int>& nums, int target) {\n        vector<int> result;\n        map<int,int> mapHash;\n        if (nums.size()<2) return result;\n        \n        for (vector<int>::size_type i=0; i<=nums.size()-1; ++i)\n            ++mapHash[nums[i]];\n        \n        for (vector<int>::size_type i=0; i<=nums.size()-2; ++i){\n            int currentValue = nums[i];\n            int biasValue = target-nums[i];\n\n            // cannot use the same element twice.\n            --mapHash[currentValue]; \n            if (mapHash[biasValue]>0){\n                for (vector<int>::size_type j=i+1; j<=nums.size()-1; ++j){\n                    if (nums[j]==biasValue){\n                        result.push_back(i);\n                        result.push_back(j);\n                        return result;\n                    }\n                }\n            }\n        }\n        return result;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": "\n"
+    }
+  ]
+}

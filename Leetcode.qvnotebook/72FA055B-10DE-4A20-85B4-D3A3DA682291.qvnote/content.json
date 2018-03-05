@@ -1,0 +1,18 @@
+{
+  "title": "129. Sum Root to Leaf Numbers",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 129. Sum Root to Leaf Numbers\n- **Depth-first Search** + Tree \n\n\n## Description\n![IMAGE](quiver-image-url/C0CAAD2849C704BEDAD09A1BA5CFB0E1.jpg)\n\n## 1. Thought line\n"
+    },
+    {
+      "type": "markdown",
+      "data": "\n## 2. **Depth-first Search** + Tree"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for a binary tree node.\n * struct TreeNode {\n *     int val;\n *     TreeNode *left;\n *     TreeNode *right;\n *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}\n * };\n */\nclass Solution {\nprivate:\n    void sumNumbersDSP(TreeNode* node, int preSum, int& result){\n        if (node==nullptr) return ;\n        if (node->left==nullptr && node->right==nullptr) {\n            result += preSum*10 + node->val;\n            return;\n        }\n        sumNumbersDSP(node->left, preSum*10 + node->val, result);\n        sumNumbersDSP(node->right, preSum*10 + node->val, result);\n    }\npublic:\n    int sumNumbers(TreeNode* root) {\n        int result = 0;\n        sumNumbersDSP(root, 0, result);\n        return result;\n    }\n};"
+    }
+  ]
+}

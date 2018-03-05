@@ -1,0 +1,14 @@
+{
+  "title": "179. Largest Number",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 179 Largest Number\n\n## Description\n\n>  Given a list of non negative integers, arrange them \n>  such that they form the largest number.\n>  For example, given [3, 30, 34, 5, 9], the largest \n>  formed number is 9534330.\n>  Note: The result may be very large, so you need to \n>  return a string instead of an integer.\n>  Credits:\n>  Special thanks to @ts for adding this problem and\n>  creating all test cases.\n\n## Solution\n\n-  **Sort**\n-  ...\n\n### Sort\n"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n       //self made comparison \n       static bool comp(int a, int b){\n              string x = to_string(a), y = to_string(b); // str = to_string(int)\n              return x + y>y + x;\n       }\n\n       string largestNumber(vector<int>& nums) {\n\n              //sort the nums according to above comparison \n              sort(nums.begin(), nums.end(), comp);\n           \n              //convert to string\n              string res = \"\";\n              for (int i = 0; i<nums.size(); i++){\n                   res += to_string(nums[i]);//concatenate the string\n              }\n              if (res[0] == '0') res = '0';\n              return res;\n       }\n};"
+    }
+  ]
+}

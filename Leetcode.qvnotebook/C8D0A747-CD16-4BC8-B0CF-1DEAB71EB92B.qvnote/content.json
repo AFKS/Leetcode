@@ -1,0 +1,18 @@
+{
+  "title": "143. Reorder List",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 143 Reorder List\n\n## Description\n> Given a singly linked list L: L0→L1→…→Ln-1→Ln,\n> reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…\n> You must do this in-place without altering the nodes' values.\n> For example,\n> Given {1,2,3,4}, reorder it to {1,4,2,3}.\n\n\n## Solution\n- **Linked List**\n- ...\n\n\n### Linked List"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "/**\n * Definition for singly-linked list.\n * struct ListNode {\n *     int val;\n *     ListNode *next;\n *     ListNode(int x) : val(x), next(NULL) {}\n * };\n */\nclass Solution {\npublic:\n    void reorderList(ListNode* head) {\n        ListNode* dummyHead = new ListNode(0);\n        dummyHead->next = head;\n        \n        ListNode* ptr1 = dummyHead;\n        ListNode* ptr2 = dummyHead;\n        \n        while(ptr2!=nullptr){\n            ptr2 = (ptr2->next!=nullptr)?ptr2->next:nullptr;\n            ptr1 = (ptr2!=nullptr)?ptr1->next:ptr1;\n            ptr2 = (ptr2!=nullptr)?ptr2->next:nullptr;\n        }\n        \n        //find out the head for the last half\n        ListNode* Half2nd = ptr1->next;\n        ptr1->next = nullptr;\n        \n        ListNode* Half1st = head;\n        \n        //reverse second half\n        ListNode* Half2ndReverseDummyHead = new ListNode(0);\n        while(Half2nd!=nullptr){\n            ListNode* Half2ndReverseDummyHeadNext = Half2ndReverseDummyHead->next;\n            Half2ndReverseDummyHead->next = new ListNode(Half2nd->val);\n            Half2ndReverseDummyHead->next->next = Half2ndReverseDummyHeadNext;\n            Half2nd = Half2nd->next;\n        }\n        \n        //insert\n        ListNode* Half1stOriList = head;\n        ListNode* Half2ndRevList = Half2ndReverseDummyHead->next;\n        while(Half1stOriList!=nullptr&&Half2ndRevList!=nullptr){\n            ListNode* Half1stOriListNext = Half1stOriList->next;\n            ListNode* Half2ndRevListNext = Half2ndRevList->next;\n            Half1stOriList->next = Half2ndRevList;\n            Half2ndRevList->next = Half1stOriListNext;\n            Half1stOriList = Half1stOriListNext;\n            Half2ndRevList = Half2ndRevListNext;\n        }\n        return;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}

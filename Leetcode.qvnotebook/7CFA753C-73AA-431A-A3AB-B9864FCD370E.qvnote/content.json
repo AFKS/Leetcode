@@ -1,0 +1,18 @@
+{
+  "title": "055. Jump Game",
+  "cells": [
+    {
+      "type": "markdown",
+      "data": "# 055 Jump Game\n- **Greedy**+array\n\n## Description\n![IMAGE](quiver-image-url/FAB27780CB5DC6829B020E4F5669E802.jpg)\n\n## 1. Thought line\n\n\n\n## 2. **Greedy**+array"
+    },
+    {
+      "type": "code",
+      "language": "c_cpp",
+      "data": "class Solution {\npublic:\n    bool canJump(vector<int>& nums) {\n        int maxRange = 0;\n        for(int i=0; i<=maxRange; i++) {\n            if (maxRange>=nums.size()-1) return true;\n            maxRange = maxRange>i+nums[i]?maxRange:i+nums[i];\n        } \n        return false;\n    }\n};"
+    },
+    {
+      "type": "markdown",
+      "data": ""
+    }
+  ]
+}
